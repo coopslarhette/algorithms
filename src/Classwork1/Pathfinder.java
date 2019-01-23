@@ -1,4 +1,4 @@
-package Classwork_1;
+package Classwork1;
 
 import java.util.*;
 

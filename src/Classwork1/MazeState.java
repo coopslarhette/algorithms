@@ -1,4 +1,4 @@
-package Classwork_1;
+package Classwork1;
 
 /**
  * Maze Pathfinding representation of a given state, i.e., an occupiable position
