@@ -45,15 +45,15 @@ public class MazeProblem {
      *             'X': A wall, 'G': A goal, 'I': The initial state, '.': an open spot
      *             For example, a valid maze might look like:
      *             <pre>
-     *             String[] maze = {
-     *                 "XXXXXXX",
-     *                 "X.....X",
-     *                 "XIX.X.X",
-     *                 "XX.X..X",
-     *                 "XG....X",
-     *                 "XXXXXXX"
-     *             };
-     *             </pre>
+     *                                     String[] maze = {
+     *                                         "XXXXXXX",
+     *                                         "X.....X",
+     *                                         "XIX.X.X",
+     *                                         "XX.X..X",
+     *                                         "XG....X",
+     *                                         "XXXXXXX"
+     *                                     };
+     *                                     </pre>
      */
     MazeProblem(String[] maze) {
         this.maze = maze;

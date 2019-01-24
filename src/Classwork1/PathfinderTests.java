@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Unit tests for Maze Pathfinder. Tests include completeness and
@@ -49,4 +49,22 @@ public class PathfinderTests {
         assertEquals(12, result[1]); // Ensure that the solution is optimal
     }
 
+    @Test
+    public void testPathfinder_t2() {
+        String[] maze = {
+                "XXXXXXX",
+                "X.....X",
+                "X...X.X",
+                "XG.XXIX",
+                "X...X.X",
+                "X.....X",
+                "XXXXXXX"
+        };
+        MazeProblem prob = new MazeProblem(maze);
+        ArrayList<String> solution = Pathfinder.solve(prob);
+
+        int[] result = prob.testSolution(solution);
+        assertEquals(1, result[0]); // Test that result is a solution
+        assertEquals(8, result[1]); // Ensure that the solution is optimal
+    }
 }

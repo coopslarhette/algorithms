@@ -30,13 +30,13 @@ public class Pathfinder {
         frontier.add(new SearchTreeNode(problem.INITIAL_STATE, null, null));
 
 
-
         // TODO: Loop: as long as the frontier is not empty...
 
         while (!frontier.isEmpty()) {
 
+
             // TODO: Get the next node to expand by the ordering of breadth-first search
-            currentNode = frontier.remove();
+            currentNode = frontier.peek();
 
             // TODO: If that node's state is the goal (see problem's isGoal method),
             // you're done! Return the solution
@@ -57,6 +57,7 @@ public class Pathfinder {
                 // action, state, and parent
                 frontier.add(new SearchTreeNode(action.getValue(), action.getKey(), currentNode));
             }
+            frontier.remove();
         }
 
         // Should never get here, but just return null to make the compiler happy
@@ -67,8 +68,8 @@ public class Pathfinder {
         Stack<String> temp = new Stack<>();
         ArrayList<String> result = new ArrayList<>();
         while (root.parent != null) {
-            root = root.parent;
             temp.add(root.action);
+            root = root.parent;
         }
         while (!temp.isEmpty()) {
             result.add(temp.pop());
