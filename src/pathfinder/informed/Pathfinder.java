@@ -17,7 +17,13 @@ public class Pathfinder {
      * the goal state, of the format: ["R", "R", "L", ...]
      */
     public static ArrayList<String> solve(MazeProblem problem) {
-        Queue<SearchTreeNode> frontier = new LinkedList<>();
+        PriorityQueue<SearchTreeNode> frontier = new PriorityQueue<SearchTreeNode>(new Comparator<SearchTreeNode>() {  // need to define getCost(),
+            // may need to change Queue comparator
+            @Override
+            public int compare(SearchTreeNode o1, SearchTreeNode o2) {
+                return problem.getCost(o1.state) - problem.getCost(o2.state);  //not sure this is right may need to switch
+            }
+        });
         ArrayList<String> result = new ArrayList<>();
         Map<String, MazeState> transitions;
         SearchTreeNode currentNode;
