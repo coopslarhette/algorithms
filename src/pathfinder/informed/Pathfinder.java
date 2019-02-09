@@ -27,11 +27,14 @@ public class Pathfinder {
         ArrayList<String> result = new ArrayList<>();
         Map<String, MazeState> transitions;
         SearchTreeNode currentNode;
+        boolean hasKey = false;
 
         frontier.add(new SearchTreeNode(problem.INITIAL_STATE, null, null));
         while (!frontier.isEmpty()) {
             currentNode = frontier.peek();
-            if (problem.isGoal(currentNode.state)) {
+            if (problem.isKey(currentNode.state))
+                hasKey = true;
+            if (hasKey && problem.isGoal(currentNode.state)) {
                 return buildPath(currentNode);
             }
             transitions = problem.getTransitions(currentNode.state);

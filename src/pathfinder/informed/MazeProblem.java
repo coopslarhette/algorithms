@@ -45,21 +45,21 @@ public class MazeProblem {
      *             'X': A wall, 'G': A goal, 'I': The initial state, '.': an open spot
      *             For example, a valid maze might look like:
      *             <pre>
-     *                                     String[] maze = {
-     *                                         "XXXXXXX",
-     *                                         "X.....X",
-     *                                         "XIX.X.X",
-     *                                         "XX.X..X",
-     *                                         "XG....X",
-     *                                         "XXXXXXX"
-     *                                     };
-     *                                     </pre>
+     *                                                             String[] maze = {
+     *                                                                 "XXXXXXX",
+     *                                                                 "X.....X",
+     *                                                                 "XIX.X.X",
+     *                                                                 "XX.X..X",
+     *                                                                 "XG....X",
+     *                                                                 "XXXXXXX"
+     *                                                             };
+     *                                                             </pre>
      */
     MazeProblem(String[] maze) {
         this.maze = maze;
         this.rows = maze.length;
         this.cols = (rows == 0) ? 0 : maze[0].length();
-        MazeState foundInitial = null, foundGoal = null;
+        MazeState foundInitial = null, foundGoal = null, foundKey;
 
         // Find the initial and goal state in the given maze, and then
         // store in fields once found
@@ -72,6 +72,8 @@ public class MazeProblem {
                     case 'G':
                         foundGoal = new MazeState(col, row);
                         break;
+                    case 'K':
+                    case 'M':
                     case '.':
                     case 'X':
                         break;
@@ -96,6 +98,10 @@ public class MazeProblem {
      */
     public boolean isGoal(MazeState state) {
         return state.equals(GOAL_STATE);
+    }
+
+    public boolean isKey(MazeState state) {
+        return maze[state.row].charAt(state.col) == 'K';
     }
 
     /**
@@ -134,11 +140,12 @@ public class MazeProblem {
 
     /**
      * Given a MazeState returns the cost of moving to that MazeState from current position in the Maze.
+     *
      * @param state the MazeState we are thinking of moving into.
      * @return The cost associated with moving into the specified MazeState in the MazeProblem's maze.
      */
     public int getCost(MazeState state) { //priority queue order is dependent on this, must implement such that cost of anticipated move is result
-        if (maze[state.row].substring(state.row, state.col+1).equals("M"))
+        if (maze[state.row].substring(state.row, state.col + 1).equals("M"))
             return 3;
         return 1;
     }
@@ -148,12 +155,12 @@ public class MazeProblem {
      * as well as returning the cost.
      *
      * @param possibleSoln A possible solution to test, which is a list of actions of the format:
-     * ["U", "D", "D", "L", ...]
+     *                     ["U", "D", "D", "L", ...]
      * @return A 2-element array of ints of the format [isSoln, cost] where:
      * isSoln will be 0 if it is not a solution, and 1 if it is
      * cost will be an integer denoting the cost of the given solution to test optimality
      */
-    public int[] testSolution (ArrayList<String> possibleSoln) {
+    public int[] testSolution(ArrayList<String> possibleSoln) {
         // Update the "moving state" that begins at the start and is modified by the transitions
         MazeState movingState = new MazeState(INITIAL_STATE.col, INITIAL_STATE.row);
         int cost = 0;
@@ -169,7 +176,8 @@ public class MazeProblem {
                 case 'X':
                     return result;
                 case 'K':
-                    hasKey = true; break;
+                    hasKey = true;
+                    break;
             }
             cost += getCost(movingState);
         }

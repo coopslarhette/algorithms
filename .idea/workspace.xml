@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c1f96635-4069-40ac-8a79-2404ebdfc064" name="Default Changelist" comment="">
+    <list default="true" id="c1f96635-4069-40ac-8a79-2404ebdfc064" name="Default Changelist" comment="adds getCost functionality and updates part of solve() for priority queue">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pathfinder/informed/MazeProblem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pathfinder/informed/MazeProblem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pathfinder/informed/Pathfinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pathfinder/informed/Pathfinder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pathfinder/informed/PathfinderTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pathfinder/informed/PathfinderTests.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -14,17 +17,24 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pathfinder/uninformed/MazeProblem.java">
+        <entry file="file://$PROJECT_DIR$/src/pathfinder/informed/MazeProblem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1">
-              <caret line="95" column="7" lean-forward="true" selection-start-line="95" selection-start-column="7" selection-end-line="95" selection-end-column="7" />
+            <state relative-caret-position="726">
+              <caret line="103" column="90" lean-forward="true" selection-start-line="103" selection-start-column="90" selection-end-line="103" selection-end-column="90" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pathfinder/informed/PathfinderTests.java">
-          <provider selected="true" editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="405">
+              <caret line="27" column="34" lean-forward="true" selection-start-line="27" selection-start-column="34" selection-end-line="27" selection-end-column="34" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -35,40 +45,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/pathfinder/informed/Pathfinder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" column="64" selection-start-line="18" selection-start-column="64" selection-end-line="18" selection-end-column="64" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pathfinder/informed/MazeProblem.java">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pathfinder/uninformed/MazeState.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="29" column="38" selection-start-line="29" selection-start-column="38" selection-end-line="29" selection-end-column="38" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pathfinder/uninformed/Pathfinder.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="930">
-              <caret line="62" column="81" selection-start-line="62" selection-start-column="81" selection-end-line="62" selection-end-column="81" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pathfinder/uninformed/PathfinderTests.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="960">
-              <caret line="68" column="5" selection-start-line="68" selection-start-column="5" selection-end-line="68" selection-end-column="5" />
+            <state relative-caret-position="540">
+              <caret line="36" column="26" selection-start-line="36" selection-start-column="26" selection-end-line="36" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -96,8 +74,9 @@
         <option value="$PROJECT_DIR$/src/Classwork1/MazeProblem.java" />
         <option value="$PROJECT_DIR$/src/pathfinder/uninformed/MazeProblem.java" />
         <option value="$PROJECT_DIR$/src/uninformed/MazeProblem.java" />
-        <option value="$PROJECT_DIR$/src/pathfinder/informed/MazeProblem.java" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/src/pathfinder/informed/PathfinderTests.java" />
+        <option value="$PROJECT_DIR$/src/pathfinder/informed/MazeProblem.java" />
         <option value="$PROJECT_DIR$/src/pathfinder/informed/Pathfinder.java" />
       </list>
     </option>
@@ -112,6 +91,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -130,12 +111,17 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="pathfinder" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="Algorithms" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Algorithms" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="pathfinder" type="462c0819:PsiDirectoryNode" />
+              <item name="informed" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -145,7 +131,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548960074377" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549674138559" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -170,7 +156,37 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.PathfinderTests (1)">
+    <configuration name="PathfinderTests (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Algorithms" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="pathfinder.informed.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="pathfinder.informed" />
+      <option name="MAIN_CLASS_NAME" value="pathfinder.informed.PathfinderTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PathfinderTests (2)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Algorithms" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="pathfinder.uninformed.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="pathfinder.uninformed" />
+      <option name="MAIN_CLASS_NAME" value="pathfinder.uninformed.PathfinderTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="PathfinderTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Algorithms" />
       <extension name="coverage">
@@ -188,6 +204,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.PathfinderTests (1)" />
+        <item itemvalue="JUnit.PathfinderTests (2)" />
         <item itemvalue="JUnit.PathfinderTests" />
       </list>
     </recent_temporary>
@@ -210,7 +228,8 @@
       <workItem from="1548217998875" duration="5135000" />
       <workItem from="1548701693376" duration="144000" />
       <workItem from="1548712304098" duration="345000" />
-      <workItem from="1548959291580" duration="718000" />
+      <workItem from="1548959291580" duration="6002000" />
+      <workItem from="1549671124921" duration="2407000" />
     </task>
     <task id="LOCAL-00001" summary="refactor">
       <created>1548276589136</created>
@@ -233,22 +252,17 @@
       <option name="project" value="LOCAL" />
       <updated>1548712440885</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="adds getCost functionality and updates part of solve() for priority queue">
+      <created>1549323827691</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1549323827691</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="PathfinderTests - 2019.01.23 at 17h 12m 29s.xml">
-      <configuration name="PathfinderTests" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="PathfinderTests - 2019.01.23 at 17h 14m 02s.xml">
-      <configuration name="PathfinderTests" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="PathfinderTests - 2019.01.23 at 17h 15m 36s.xml">
-      <configuration name="PathfinderTests" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="PathfinderTests - 2019.01.23 at 17h 15m 46s.xml">
-      <configuration name="PathfinderTests" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="PathfinderTests - 2019.01.23 at 17h 25m 48s.xml">
       <configuration name="PathfinderTests" configurationId="JUnit" />
     </history-entry>
@@ -267,15 +281,26 @@
     <history-entry file="PathfinderTests - 2019.01.23 at 18h 03m 58s.xml">
       <configuration name="PathfinderTests" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="PathfinderTests - 2019.02.08 at 16h 14m 50s.xml">
+      <configuration name="PathfinderTests" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PathfinderTests_(2) - 2019.02.08 at 16h 15m 18s.xml">
+      <configuration name="PathfinderTests (2)" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PathfinderTests_(1) - 2019.02.08 at 16h 24m 30s.xml">
+      <configuration name="PathfinderTests (1)" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PathfinderTests_(1) - 2019.02.08 at 16h 41m 38s.xml">
+      <configuration name="PathfinderTests (1)" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11581000" />
+    <option name="totallyTimeSpent" value="19272000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2771673" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2802198" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -297,7 +322,7 @@
       <window_info anchor="bottom" id="Duplicate detector" order="12" weight="0.32959184" />
       <window_info anchor="bottom" id="Messages" order="13" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.24969475" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" id="Theme Preview" order="4" />
@@ -314,45 +339,20 @@
     <MESSAGE value="refactor" />
     <MESSAGE value="code complete, added a few tests" />
     <MESSAGE value="refactors and adds informed package" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactors and adds informed package" />
+    <MESSAGE value="adds getCost functionality and updates part of solve() for priority queue" />
+    <option name="LAST_COMMIT_MESSAGE" value="adds getCost functionality and updates part of solve() for priority queue" />
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/pathfinder/informed/PathfinderTests.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pathfinder/informed/MazeState.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pathfinder/uninformed/MazeState.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="29" column="38" selection-start-line="29" selection-start-column="38" selection-end-line="29" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pathfinder/uninformed/Pathfinder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="930">
-          <caret line="62" column="81" selection-start-line="62" selection-start-column="81" selection-end-line="62" selection-end-column="81" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pathfinder/uninformed/PathfinderTests.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="960">
-          <caret line="68" column="5" selection-start-line="68" selection-start-column="5" selection-end-line="68" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="4" selection-start-column="4" selection-end-column="4" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pathfinder/informed/MazeProblem.java">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pathfinder/uninformed/MazeProblem.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -361,10 +361,51 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/pathfinder/uninformed/MazeState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="29" column="38" selection-start-line="29" selection-start-column="38" selection-end-line="29" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pathfinder/uninformed/PathfinderTests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="903">
+          <caret line="68" column="5" selection-start-line="68" selection-start-column="5" selection-end-line="68" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pathfinder/informed/MazeState.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pathfinder/uninformed/Pathfinder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="571">
+          <caret line="62" column="81" selection-start-line="62" selection-start-column="81" selection-end-line="62" selection-end-column="81" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pathfinder/informed/PathfinderTests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="27" column="34" lean-forward="true" selection-start-line="27" selection-start-column="34" selection-end-line="27" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pathfinder/informed/MazeProblem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="726">
+          <caret line="103" column="90" lean-forward="true" selection-start-line="103" selection-start-column="90" selection-end-line="103" selection-end-column="90" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/pathfinder/informed/Pathfinder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="64" selection-start-line="18" selection-start-column="64" selection-end-line="18" selection-end-column="64" />
+        <state relative-caret-position="540">
+          <caret line="36" column="26" selection-start-line="36" selection-start-column="26" selection-end-line="36" selection-end-column="26" />
         </state>
       </provider>
     </entry>
