@@ -101,7 +101,7 @@ public class MazeProblem {
     }
 
     public boolean isKey(MazeState state) {
-        return maze[state.row].charAt(state.col) == 'K';
+        return maze[state.row].substring(state.col, state.col+1).equals("K");
     }
 
     /**
@@ -145,7 +145,7 @@ public class MazeProblem {
      * @return The cost associated with moving into the specified MazeState in the MazeProblem's maze.
      */
     public int getCost(MazeState state) { //priority queue order is dependent on this, must implement such that cost of anticipated move is result
-        if (maze[state.row].substring(state.row, state.col + 1).equals("M"))
+        if (maze[state.row].charAt(state.col) == ('M'))
             return 3;
         return 1;
     }
