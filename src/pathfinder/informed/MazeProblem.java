@@ -2,6 +2,7 @@ package pathfinder.informed;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 
 /**
@@ -15,7 +16,9 @@ public class MazeProblem {
     // -----------------------------------------------------------------------------
     private String[] maze;
     private int rows, cols;
-    public final MazeState INITIAL_STATE, GOAL_STATE, KEY_STATE;
+    public final MazeState INITIAL_STATE, KEY_STATE;
+    public final HashSet<MazeState> GOAL_STATES;
+    public final HashSet<MazeState> KEY_SET = new HashSet<>();
     private static final Map<String, MazeState> TRANS_MAP = createTransitions();
 
     /**
@@ -59,7 +62,8 @@ public class MazeProblem {
         this.maze = maze;
         this.rows = maze.length;
         this.cols = (rows == 0) ? 0 : maze[0].length();
-        MazeState foundInitial = null, foundGoal = null, foundKey = null;
+        MazeState foundInitial = null, foundKey = null;
+        HashSet<MazeState> goals = new HashSet<>();
 
         // Find the initial and goal state in the given maze, and then
         // store in fields once found
@@ -70,7 +74,7 @@ public class MazeProblem {
                         foundInitial = new MazeState(col, row);
                         break;
                     case 'G':
-                        foundGoal = new MazeState(col, row);
+                        goals.add(new MazeState(col, row));
                         break;
                     case 'K':
                         foundKey = new MazeState(col, row);
@@ -85,8 +89,9 @@ public class MazeProblem {
             }
         }
         INITIAL_STATE = foundInitial;
-        GOAL_STATE = foundGoal;
-        KEY_STATE = foundKey; //gonna keep this format of init, but ask froney why he does it so
+        GOAL_STATES = goals;
+        KEY_STATE = foundKey;
+        KEY_SET.add(foundKey);
     }
 
 
@@ -100,7 +105,7 @@ public class MazeProblem {
      * @return Boolean of whether or not the given state is a Goal.
      */
     public boolean isGoal(MazeState state) {
-        return state.equals(GOAL_STATE);
+        return GOAL_STATES.contains(state);
     }
 
     public boolean isKey(MazeState state) {
