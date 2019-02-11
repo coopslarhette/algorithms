@@ -15,11 +15,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/pathfinder/informed/MazeProblem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4">
-              <caret line="122" column="20" selection-start-line="122" selection-start-column="20" selection-end-line="122" selection-end-column="20" />
+            <state relative-caret-position="1999">
+              <caret line="149" column="86" selection-start-line="149" selection-start-column="86" selection-end-line="149" selection-end-column="86" />
               <folding>
                 <element signature="e#4455#4456#0" expanded="true" />
                 <element signature="e#4501#4502#0" expanded="true" />
@@ -28,11 +28,17 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pathfinder/informed/Pathfinder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="409">
-              <caret line="64" column="49" selection-start-line="64" selection-start-column="49" selection-end-line="64" selection-end-column="49" />
+            <state relative-caret-position="495">
+              <caret line="33" column="56" selection-start-line="33" selection-start-column="56" selection-end-line="33" selection-end-column="56" />
+              <folding>
+                <element signature="e#4232#4233#0" expanded="true" />
+                <element signature="e#4257#4258#0" expanded="true" />
+                <element signature="e#4297#4298#0" expanded="true" />
+                <element signature="e#4321#4322#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -40,7 +46,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pathfinder/informed/PathfinderTests.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
+            <state relative-caret-position="238">
               <caret line="16" column="23" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -59,6 +65,8 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>findPath</find>
+      <find>history</find>
+      <find>sumcost</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -79,8 +87,8 @@
         <option value="$PROJECT_DIR$/src/uninformed/MazeProblem.java" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/pathfinder/informed/PathfinderTests.java" />
-        <option value="$PROJECT_DIR$/src/pathfinder/informed/MazeProblem.java" />
         <option value="$PROJECT_DIR$/src/pathfinder/informed/Pathfinder.java" />
+        <option value="$PROJECT_DIR$/src/pathfinder/informed/MazeProblem.java" />
       </list>
     </option>
   </component>
@@ -134,7 +142,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549857972842" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549862451739" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -233,7 +241,7 @@
       <workItem from="1548712304098" duration="345000" />
       <workItem from="1548959291580" duration="6002000" />
       <workItem from="1549671124921" duration="10072000" />
-      <workItem from="1549855811183" duration="1867000" />
+      <workItem from="1549855811183" duration="4203000" />
     </task>
     <task id="LOCAL-00001" summary="refactor">
       <created>1548276589136</created>
@@ -267,27 +275,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="PathfinderTests_(1) - 2019.02.10 at 13h 43m 23s.xml">
-      <configuration name="PathfinderTests (1)" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="PathfinderTests_(1) - 2019.02.10 at 13h 51m 50s.xml">
-      <configuration name="PathfinderTests (1)" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="PathfinderTests_(1) - 2019.02.10 at 13h 52m 22s.xml">
-      <configuration name="PathfinderTests (1)" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="PathfinderTests_(1) - 2019.02.10 at 19h 30m 47s.xml">
-      <configuration name="PathfinderTests (1)" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="PathfinderTests_(1) - 2019.02.10 at 19h 33m 43s.xml">
-      <configuration name="PathfinderTests (1)" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="PathfinderTests_(1) - 2019.02.10 at 19h 44m 46s.xml">
-      <configuration name="PathfinderTests (1)" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="PathfinderTests_(1) - 2019.02.10 at 19h 49m 47s.xml">
-      <configuration name="PathfinderTests (1)" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="PathfinderTests_(1) - 2019.02.10 at 19h 50m 19s.xml">
       <configuration name="PathfinderTests (1)" configurationId="JUnit" />
     </history-entry>
@@ -297,9 +284,30 @@
     <history-entry file="PathfinderTests_(1) - 2019.02.10 at 20h 02m 50s.xml">
       <configuration name="PathfinderTests (1)" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="PathfinderTests_(1) - 2019.02.10 at 20h 05m 28s.xml">
+      <configuration name="PathfinderTests (1)" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PathfinderTests_(1) - 2019.02.10 at 20h 09m 00s.xml">
+      <configuration name="PathfinderTests (1)" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PathfinderTests_(1) - 2019.02.10 at 20h 10m 30s.xml">
+      <configuration name="PathfinderTests (1)" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PathfinderTests_(1) - 2019.02.10 at 20h 11m 37s.xml">
+      <configuration name="PathfinderTests (1)" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PathfinderTests_(1) - 2019.02.10 at 20h 13m 39s.xml">
+      <configuration name="PathfinderTests (1)" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PathfinderTests_(1) - 2019.02.10 at 20h 14m 50s.xml">
+      <configuration name="PathfinderTests (1)" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PathfinderTests_(1) - 2019.02.10 at 20h 17m 45s.xml">
+      <configuration name="PathfinderTests (1)" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28804000" />
+    <option name="totallyTimeSpent" value="31140000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
@@ -392,7 +400,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pathfinder/informed/PathfinderTests.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
+        <state relative-caret-position="238">
           <caret line="16" column="23" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -400,21 +408,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pathfinder/informed/MazeProblem.java">
+    <entry file="file://$PROJECT_DIR$/src/pathfinder/informed/Pathfinder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4">
-          <caret line="122" column="20" selection-start-line="122" selection-start-column="20" selection-end-line="122" selection-end-column="20" />
+        <state relative-caret-position="495">
+          <caret line="33" column="56" selection-start-line="33" selection-start-column="56" selection-end-line="33" selection-end-column="56" />
           <folding>
-            <element signature="e#4455#4456#0" expanded="true" />
-            <element signature="e#4501#4502#0" expanded="true" />
+            <element signature="e#4232#4233#0" expanded="true" />
+            <element signature="e#4257#4258#0" expanded="true" />
+            <element signature="e#4297#4298#0" expanded="true" />
+            <element signature="e#4321#4322#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pathfinder/informed/Pathfinder.java">
+    <entry file="file://$PROJECT_DIR$/src/pathfinder/informed/MazeProblem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="409">
-          <caret line="64" column="49" selection-start-line="64" selection-start-column="49" selection-end-line="64" selection-end-column="49" />
+        <state relative-caret-position="1999">
+          <caret line="149" column="86" selection-start-line="149" selection-start-column="86" selection-end-line="149" selection-end-column="86" />
+          <folding>
+            <element signature="e#4455#4456#0" expanded="true" />
+            <element signature="e#4501#4502#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

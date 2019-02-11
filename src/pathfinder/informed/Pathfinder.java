@@ -20,60 +20,57 @@ public class Pathfinder {
         PriorityQueue<SearchTreeNode> frontier = new PriorityQueue<SearchTreeNode>(new Comparator<SearchTreeNode>() {
             // may need to change Queue comparator
             @Override
-            public int compare(SearchTreeNode o1, SearchTreeNode o2) {
+            public int compare(SearchTreeNode o1, SearchTreeNode o2) { //need to figure where to implement historical cost
                 return problem.getCost(o1.state) - problem.getCost(o2.state);
             }
         });
         ArrayList<String> result = new ArrayList<>();
         Map<String, MazeState> transitions;
-        Map<MazeState, Boolean> history = new HashMap<>();
+        Map<MazeState, Boolean> graveyard = new HashMap<>();
         SearchTreeNode currentNode = null;
         boolean hasKey = false;
 
+        /*
+         * need to clean code, maybe create generalized findValue() method?
+         */
 
-        //this is all sorts of fucked, I think there is a problem with isKey, a problem with removing and adding to the frontier,
-        // and a issue with building the path
         //findKey
-        int i = 0;
         frontier.add(new SearchTreeNode(problem.INITIAL_STATE, null, null));
         while (!hasKey && !frontier.isEmpty()) {
             currentNode = frontier.peek();
-            history.put(currentNode.state, true);
-            System.out.println("i: " + i);
-            i++;
-            System.out.println("col: " + currentNode.state.col + ", " + "row: " + currentNode.state.row);
+            graveyard.put(currentNode.state, true);
             if (problem.isKey(currentNode.state)) {
                 hasKey = true;
                 result = buildPath(currentNode);
+                System.out.println("key path: " + result.toString());
             }
             transitions = problem.getTransitions(currentNode.state);
             for (Map.Entry<String, MazeState> action : transitions.entrySet()) {
-                //don't want to add transition if we've seen it before
-                if (!history.containsKey(action.getValue()))
+                if (!graveyard.containsKey(action.getValue()))
                     frontier.add(new SearchTreeNode(action.getValue(), action.getKey(), currentNode));
             }
             frontier.remove(currentNode);
         }
 
         frontier.clear();
-        history.clear();
+        graveyard.clear();
 
+        //findGoal
         frontier.add(new SearchTreeNode(currentNode.state, null, null));  //need to give null parent for buildPath()
         while (!frontier.isEmpty()) {
-            System.out.println("second while loop running");
             currentNode = frontier.peek();
-            history.put(currentNode.state, true);
+            graveyard.put(currentNode.state, true);
             if (problem.isGoal(currentNode.state)) {
                 result.addAll(buildPath(currentNode));
+                System.out.println("goal path: " + buildPath(currentNode));
                 return result;
             }
             transitions = problem.getTransitions(currentNode.state);
             for (Map.Entry<String, MazeState> action : transitions.entrySet()) {
-                if (!history.containsKey(action.getValue()))
+                if (!graveyard.containsKey(action.getValue()))
                     frontier.add(new SearchTreeNode(action.getValue(), action.getKey(), currentNode));
             }
-
-            frontier.remove();
+            frontier.remove(currentNode);
         }
 
         return null;
@@ -102,6 +99,7 @@ class SearchTreeNode {
     MazeState state;
     String action;
     SearchTreeNode parent;
+    int pastCost;
 
     /**
      * Constructs a new SearchTreeNode to be used in the Search Tree.
@@ -114,6 +112,16 @@ class SearchTreeNode {
         this.state = state;
         this.action = action;
         this.parent = parent;
+        pastCost = 0;
+    }
+
+    //might not need this if we just keep the vars/class protected
+    public void addCost(int addend) {
+        pastCost += addend;
+    }
+
+    public int getPastCost() {
+        return pastCost;
     }
 
 }
