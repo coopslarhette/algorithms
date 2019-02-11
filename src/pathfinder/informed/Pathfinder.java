@@ -17,52 +17,60 @@ public class Pathfinder {
      * the goal state, of the format: ["R", "R", "L", ...]
      */
     public static ArrayList<String> solve(MazeProblem problem) {
-        PriorityQueue<SearchTreeNode> frontier = new PriorityQueue<SearchTreeNode>(new Comparator<SearchTreeNode>() {  // need to define getCost(),
+        PriorityQueue<SearchTreeNode> frontier = new PriorityQueue<SearchTreeNode>(new Comparator<SearchTreeNode>() {
             // may need to change Queue comparator
             @Override
             public int compare(SearchTreeNode o1, SearchTreeNode o2) {
-                return problem.getCost(o2.state) - problem.getCost(o1.state);  //not sure this is right may need to switch
+                return problem.getCost(o1.state) - problem.getCost(o2.state);
             }
         });
         ArrayList<String> result = new ArrayList<>();
         Map<String, MazeState> transitions;
+        Map<MazeState, Boolean> history = new HashMap<>();
         SearchTreeNode currentNode = null;
         boolean hasKey = false;
 
 
-        //this is all sorts of fucked, I think there is a problem with isKey, a problem with removing and adding ot the fronter,
+        //this is all sorts of fucked, I think there is a problem with isKey, a problem with removing and adding to the frontier,
         // and a issue with building the path
         //findKey
+        int i = 0;
         frontier.add(new SearchTreeNode(problem.INITIAL_STATE, null, null));
-        while (!frontier.isEmpty()) {
+        while (!hasKey && !frontier.isEmpty()) {
             currentNode = frontier.peek();
+            history.put(currentNode.state, true);
+            System.out.println("i: " + i);
+            i++;
+            System.out.println("col: " + currentNode.state.col + ", " + "row: " + currentNode.state.row);
             if (problem.isKey(currentNode.state)) {
                 hasKey = true;
                 result = buildPath(currentNode);
-                System.out.println("check");
             }
             transitions = problem.getTransitions(currentNode.state);
             for (Map.Entry<String, MazeState> action : transitions.entrySet()) {
-                frontier.add(new SearchTreeNode(action.getValue(), action.getKey(), currentNode));
+                //don't want to add transition if we've seen it before
+                if (!history.containsKey(action.getValue()))
+                    frontier.add(new SearchTreeNode(action.getValue(), action.getKey(), currentNode));
             }
-
             frontier.remove(currentNode);
         }
 
         frontier.clear();
+        history.clear();
 
-        currentNode.parent = null;
-        frontier.add(currentNode);
-        while (hasKey && !frontier.isEmpty()) {
-            System.out.println("while loop running");
+        frontier.add(new SearchTreeNode(currentNode.state, null, null));  //need to give null parent for buildPath()
+        while (!frontier.isEmpty()) {
+            System.out.println("second while loop running");
             currentNode = frontier.peek();
+            history.put(currentNode.state, true);
             if (problem.isGoal(currentNode.state)) {
                 result.addAll(buildPath(currentNode));
                 return result;
             }
             transitions = problem.getTransitions(currentNode.state);
             for (Map.Entry<String, MazeState> action : transitions.entrySet()) {
-                frontier.add(new SearchTreeNode(action.getValue(), action.getKey(), currentNode));
+                if (!history.containsKey(action.getValue()))
+                    frontier.add(new SearchTreeNode(action.getValue(), action.getKey(), currentNode));
             }
 
             frontier.remove();
@@ -70,68 +78,6 @@ public class Pathfinder {
 
         return null;
     }
-
-//    public static ArrayList<String> findKey(MazeProblem problem) {
-//        //priority queue is cost functionality??
-//        PriorityQueue<SearchTreeNode> frontier = new PriorityQueue<SearchTreeNode>(new Comparator<SearchTreeNode>() {  // need to define getCost(),
-//            // may need to change Queue comparator
-//            @Override
-//            public int compare(SearchTreeNode o1, SearchTreeNode o2) {
-//                return Math.abs(problem.getCost(o1.state) - problem.getCost(o2.state));  //not sure this is right may need to switch
-//            }
-//        });
-//
-//        ArrayList<String> result = new ArrayList<>();
-//        Map<String, MazeState> transitions;
-//        SearchTreeNode currentNode;
-//        boolean hasKey = false;
-//
-//        frontier.add(new SearchTreeNode(problem.INITIAL_STATE, null, null));
-//        while (!frontier.isEmpty()) {
-//            System.out.println("while loop running");
-//            currentNode = frontier.peek();
-//            if (problem.isKey(currentNode.state))
-//                return buildPath(currentNode);
-//            transitions = problem.getTransitions(currentNode.state);
-//            for (Map.Entry<String, MazeState> action : transitions.entrySet()) {
-//                frontier.add(new SearchTreeNode(action.getValue(), action.getKey(), currentNode));
-//            }
-//
-//            frontier.remove();
-//        }
-//    }
-//
-//        public static ArrayList<String> findGoal(MazeProblem problem) {
-//            //priority queue is cost functionality??
-//            PriorityQueue<SearchTreeNode> frontier = new PriorityQueue<SearchTreeNode>(new Comparator<SearchTreeNode>() {  // need to define getCost(),
-//                // may need to change Queue comparator
-//                @Override
-//                public int compare(SearchTreeNode o1, SearchTreeNode o2) {
-//                    return Math.abs(problem.getCost(o1.state) - problem.getCost(o2.state));  //not sure this is right may need to switch
-//                }
-//            });
-//            ArrayList<String> result = new ArrayList<>();
-//            Map<String, MazeState> transitions;
-//            SearchTreeNode currentNode;
-//
-//            frontier.add(new SearchTreeNode(problem.INITIAL_STATE, null, null));
-//            while (!frontier.isEmpty()) {
-//                System.out.println("while loop running");
-//                currentNode = frontier.peek();
-//                if (problem.isGoal(currentNode.state))
-//                    return buildPath(currentNode);
-//                transitions = problem.getTransitions(currentNode.state);
-//                for (Map.Entry<String, MazeState> action : transitions.entrySet()) {
-//                    frontier.add(new SearchTreeNode(action.getValue(), action.getKey(), currentNode));
-//                }
-//
-//                frontier.remove();
-//            }
-//        }
-//
-//        //TODO: figure out if it is possible not to have a key
-//        return null;
-//    }
 
     public static ArrayList<String> buildPath(SearchTreeNode root) {
         Stack<String> temp = new Stack<>();

@@ -15,7 +15,7 @@ public class MazeProblem {
     // -----------------------------------------------------------------------------
     private String[] maze;
     private int rows, cols;
-    public final MazeState INITIAL_STATE, GOAL_STATE;
+    public final MazeState INITIAL_STATE, GOAL_STATE, KEY_STATE;
     private static final Map<String, MazeState> TRANS_MAP = createTransitions();
 
     /**
@@ -45,21 +45,21 @@ public class MazeProblem {
      *             'X': A wall, 'G': A goal, 'I': The initial state, '.': an open spot
      *             For example, a valid maze might look like:
      *             <pre>
-     *                                                             String[] maze = {
-     *                                                                 "XXXXXXX",
-     *                                                                 "X.....X",
-     *                                                                 "XIX.X.X",
-     *                                                                 "XX.X..X",
-     *                                                                 "XG....X",
-     *                                                                 "XXXXXXX"
-     *                                                             };
-     *                                                             </pre>
+     *                                                                                     String[] maze = {
+     *                                                                                         "XXXXXXX",
+     *                                                                                         "X.....X",
+     *                                                                                         "XIX.X.X",
+     *                                                                                         "XX.X..X",
+     *                                                                                         "XG....X",
+     *                                                                                         "XXXXXXX"
+     *                                                                                     };
+     *                                                                                     </pre>
      */
     MazeProblem(String[] maze) {
         this.maze = maze;
         this.rows = maze.length;
         this.cols = (rows == 0) ? 0 : maze[0].length();
-        MazeState foundInitial = null, foundGoal = null, foundKey;
+        MazeState foundInitial = null, foundGoal = null, foundKey = null;
 
         // Find the initial and goal state in the given maze, and then
         // store in fields once found
@@ -73,6 +73,8 @@ public class MazeProblem {
                         foundGoal = new MazeState(col, row);
                         break;
                     case 'K':
+                        foundKey = new MazeState(col, row);
+                        break;
                     case 'M':
                     case '.':
                     case 'X':
@@ -84,6 +86,7 @@ public class MazeProblem {
         }
         INITIAL_STATE = foundInitial;
         GOAL_STATE = foundGoal;
+        KEY_STATE = foundKey; //gonna keep this format of init, but ask froney why he does it so
     }
 
 
@@ -101,7 +104,7 @@ public class MazeProblem {
     }
 
     public boolean isKey(MazeState state) {
-        return maze[state.row].substring(state.col, state.col+1).equals("K");
+        return state.equals(KEY_STATE);
     }
 
     /**
@@ -144,9 +147,12 @@ public class MazeProblem {
      * @param state the MazeState we are thinking of moving into.
      * @return The cost associated with moving into the specified MazeState in the MazeProblem's maze.
      */
-    public int getCost(MazeState state) { //priority queue order is dependent on this, must implement such that cost of anticipated move is result
-        if (maze[state.row].charAt(state.col) == ('M'))
+    public int getCost(MazeState state) {
+        if (maze[state.row].substring(state.col, state.col + 2).equals("M")) {
+            System.out.println("mud detected");
             return 3;
+        }
+        System.out.println("cost 1");
         return 1;
     }
 
