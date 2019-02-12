@@ -39,14 +39,12 @@ public class Pathfinder {
      * * the goal state, of the format: ["R", "R", "L", ...]
      */
     private static ArrayList<String> findPath(MazeProblem problem, HashSet<MazeState> goal, MazeState initState) {
-        PriorityQueue<SearchTreeNode> frontier = new PriorityQueue<SearchTreeNode>(new Comparator<SearchTreeNode>() {
-            // may need to change Queue comparator
+        PriorityQueue<SearchTreeNode> frontier = new PriorityQueue<>(new Comparator<>() {
             @Override
             public int compare(SearchTreeNode o1, SearchTreeNode o2) {
                 return (o1.cost + manhattanDist(goal, o1.state)) - (o2.cost + manhattanDist(goal, o2.state));
             }
         });
-        ArrayList<String> result = new ArrayList<>();
         Map<String, MazeState> transitions;
         HashSet<MazeState> graveyard = new HashSet<>();
         SearchTreeNode currentNode;
@@ -99,9 +97,7 @@ public class Pathfinder {
                 distance = Math.abs(state.col - current.col) + Math.abs(state.row - current.row);
             }
         }
-
         return distance;
-
     }
 }
 
