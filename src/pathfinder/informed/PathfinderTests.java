@@ -79,4 +79,22 @@ public class PathfinderTests {
         assertNull(solution); // Ensure that Pathfinder knows when there's no solution
     }
 
+    @Test
+    public void testPathfinder_t4() {
+        String[] maze = {
+                "XXXXXXX",
+                "X..I..X",
+                "X.....X",
+                "X.MMMGX",
+                "X..KX.X",
+                "XXXXXXX"
+        };
+        MazeProblem prob = new MazeProblem(maze);
+        ArrayList<String> solution = Pathfinder.solve(prob);
+
+        int[] result = prob.testSolution(solution);
+        assertEquals(1, result[0]);  // Test that result is a solution
+        assertEquals(12, result[1]); // Ensure that the solution is optimal
+    }
+
 }

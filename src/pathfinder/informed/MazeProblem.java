@@ -152,8 +152,9 @@ public class MazeProblem {
      * @param state the MazeState we are thinking of moving into.
      * @return The cost associated with moving into the specified MazeState in the MazeProblem's maze.
      */
-    public int getCost(MazeState state) {  //should this calc historical cost as well?
+    public int getCost(MazeState state) {
         if (maze[state.row].substring(state.col, state.col + 1).equals("M")) {
+            System.out.println("mud");
             return 3;
         }
         return 1;

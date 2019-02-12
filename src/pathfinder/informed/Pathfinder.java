@@ -83,6 +83,15 @@ public class Pathfinder {
         return null;
     }
 
+    /**
+     * Finds optimal path from an initial MazeState to goal MazeState.
+     *
+     * @param problem   A MazeProblem that specifies the maze, actions, transitions.
+     * @param goal      Goal MazeState to find a path to.
+     * @param initState Initial MazeState from which algorithm starts.
+     * @return An ArrayList of Strings representing actions that lead from the initial to
+     * * the goal state, of the format: ["R", "R", "L", ...]
+     */
     public static ArrayList<String> findPath(MazeProblem problem, HashSet<MazeState> goal, MazeState initState) {
         PriorityQueue<SearchTreeNode> frontier = new PriorityQueue<SearchTreeNode>(new Comparator<SearchTreeNode>() {
             // may need to change Queue comparator
@@ -114,6 +123,13 @@ public class Pathfinder {
         return null;
     }
 
+    /**
+     * Given a leaf node in the search tree (a goal), returns a solution by traversing
+     * up the search tree, collecting actions along the way, until reaching the root
+     *
+     * @param root SearchTreeNode to start the upward traversal at (a goal node)
+     * @return ArrayList sequence of actions; solution of format ["U", "R", "U", ...]
+     */
     public static ArrayList<String> buildPath(SearchTreeNode root) {
         ArrayList<String> result = new ArrayList<>();
         for (SearchTreeNode current = root; current.parent != null; current = current.parent) {
@@ -123,6 +139,13 @@ public class Pathfinder {
         return result;
     }
 
+    /**
+     * Calculates the Manhatann distance from the current MazeState to the MazeState of the nearest goal.
+     *
+     * @param goals   All possible goals in the Maze problem. Finds the closest one.
+     * @param current Starting position to use in calculations
+     * @return Distance to the goal it detmerines is closest.
+     */
     public static int manhatannDist(HashSet<MazeState> goals, MazeState current) {
         int distance = Integer.MAX_VALUE;
         for (MazeState state : goals) {
@@ -161,6 +184,14 @@ class SearchTreeNode {
         cost = parent.cost;
     }
 
+    /**
+     * Overloaded constructor that adds ability to set cost at initialization.
+     *
+     * @param state  The MazeState (col, row) that this node represents.
+     * @param action The action that *led to* this state / node.
+     * @param parent Reference to parent SearchTreeNode in the Search Tree.
+     * @param cost Initial cost that this node should start at.
+     */
     SearchTreeNode(MazeState state, String action, SearchTreeNode parent, int cost) {
         this.state = state;
         this.action = action;
