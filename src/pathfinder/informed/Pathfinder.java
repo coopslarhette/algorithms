@@ -2,6 +2,10 @@ package pathfinder.informed;
 
 import java.util.*;
 
+/*
+ * @author Cooper LaRhette, CSMI-282
+ */
+
 /**
  * Maze Pathfinding algorithm that implements an informed A* tree search.
  */
