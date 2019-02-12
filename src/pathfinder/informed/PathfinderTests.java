@@ -1,8 +1,11 @@
 package pathfinder.informed;
 
-import static org.junit.Assert.*;
 import org.junit.Test;
+
 import java.util.ArrayList;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 /**
  * Unit tests for Maze Pathfinder. Tests include completeness and
@@ -95,6 +98,45 @@ public class PathfinderTests {
         int[] result = prob.testSolution(solution);
         assertEquals(1, result[0]);  // Test that result is a solution
         assertEquals(14, result[1]); // Ensure that the solution is optimal
+    }
+
+    @Test
+    public void testPathfinder_t5() {
+        String[] maze = {
+                "XXXXXXXX",
+                "X...IM.X",
+                "X...X..X",
+                "X...X..X",
+                "XX.MXMGX",
+                "X.....KX",
+                "XXXXXXXX"
+        };
+        MazeProblem prob = new MazeProblem(maze);
+        ArrayList<String> solution = Pathfinder.solve(prob);
+
+        int[] result = prob.testSolution(solution);
+        assertEquals(1, result[0]);  // Test that result is a solution
+        assertEquals(9, result[1]); // Ensure that the solution is optimal
+    }
+
+
+    @Test
+    public void testPathfinder_t6() {
+        String[] maze = {
+                "XXXXXXXX",
+                "X....GIX",
+                "X.XXXXXX",
+                "X......X",
+                "XXXXXX.X",
+                "XK.....X",
+                "XXXXXXXX"
+        };
+        MazeProblem prob = new MazeProblem(maze);
+        ArrayList<String> solution = Pathfinder.solve(prob);
+
+        int[] result = prob.testSolution(solution);
+        assertEquals(1, result[0]);  // Test that result is a solution
+        assertEquals(37, result[1]); // Ensure that the solution is optimal
     }
 
 }

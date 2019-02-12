@@ -3,7 +3,7 @@ package pathfinder.informed;
 import java.util.*;
 
 /**
- * Maze Pathfinding algorithm that implements a basic, uninformed, breadth-first tree search.
+ * Maze Pathfinding algorithm that implements an informed A* tree search.
  */
 public class Pathfinder {
 
@@ -17,11 +17,14 @@ public class Pathfinder {
      * the goal state, of the format: ["R", "R", "L", ...]
      */
     public static ArrayList<String> solve(MazeProblem problem) {
-        ArrayList<String> result = findPath(problem, problem.KEY_SET, problem.INITIAL_STATE);
-        if (result != null) {
-            ArrayList<String> goalPath = findPath(problem, problem.GOAL_STATES, problem.KEY_STATE);
-            result.addAll(goalPath);
-            return result;
+        ArrayList<String> keyPath;
+        ArrayList<String> goalPath;
+
+        keyPath = findPath(problem, problem.KEY_SET, problem.INITIAL_STATE);
+        if (keyPath != null) {
+            goalPath = findPath(problem, problem.GOAL_STATES, problem.KEY_STATE);
+            keyPath.addAll(goalPath);
+            return keyPath;
         }
         return null;
     }
@@ -35,7 +38,7 @@ public class Pathfinder {
      * @return An ArrayList of Strings representing actions that lead from the initial to
      * * the goal state, of the format: ["R", "R", "L", ...]
      */
-    public static ArrayList<String> findPath(MazeProblem problem, HashSet<MazeState> goal, MazeState initState) {
+    private static ArrayList<String> findPath(MazeProblem problem, HashSet<MazeState> goal, MazeState initState) {
         PriorityQueue<SearchTreeNode> frontier = new PriorityQueue<SearchTreeNode>(new Comparator<SearchTreeNode>() {
             // may need to change Queue comparator
             @Override
@@ -73,7 +76,7 @@ public class Pathfinder {
      * @param root SearchTreeNode to start the upward traversal at (a goal node)
      * @return ArrayList sequence of actions; solution of format ["U", "R", "U", ...]
      */
-    public static ArrayList<String> buildPath(SearchTreeNode root) {
+    private static ArrayList<String> buildPath(SearchTreeNode root) {
         ArrayList<String> result = new ArrayList<>();
         for (SearchTreeNode current = root; current.parent != null; current = current.parent) {
             result.add(current.action);
@@ -89,7 +92,7 @@ public class Pathfinder {
      * @param current Starting position to use in calculations
      * @return Distance to the goal it detmerines is closest.
      */
-    public static int manhattanDist(HashSet<MazeState> goals, MazeState current) {
+    private static int manhattanDist(HashSet<MazeState> goals, MazeState current) {
         int distance = Integer.MAX_VALUE;
         for (MazeState state : goals) {
             if (Math.abs(state.col - current.col) + Math.abs(state.row - current.row) < distance) {
@@ -115,20 +118,6 @@ class SearchTreeNode {
 
     /**
      * Constructs a new SearchTreeNode to be used in the Search Tree.
-     *
-     * @param state  The MazeState (col, row) that this node represents.
-     * @param action The action that *led to* this state / node.
-     * @param parent Reference to parent SearchTreeNode in the Search Tree.
-     */
-    SearchTreeNode(MazeState state, String action, SearchTreeNode parent) {
-        this.state = state;
-        this.action = action;
-        this.parent = parent;
-        cost = parent.cost;
-    }
-
-    /**
-     * Overloaded constructor that adds ability to set cost at initialization.
      *
      * @param state  The MazeState (col, row) that this node represents.
      * @param action The action that *led to* this state / node.
