@@ -154,7 +154,6 @@ public class MazeProblem {
      */
     public int getCost(MazeState state) {
         if (maze[state.row].substring(state.col, state.col + 1).equals("M")) {
-            System.out.println("mud");
             return 3;
         }
         return 1;

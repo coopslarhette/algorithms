@@ -17,67 +17,10 @@ public class Pathfinder {
      * the goal state, of the format: ["R", "R", "L", ...]
      */
     public static ArrayList<String> solve(MazeProblem problem) {
-//        PriorityQueue<SearchTreeNode> frontier = new PriorityQueue<SearchTreeNode>(new Comparator<SearchTreeNode>() {
-//            // may need to change Queue comparator
-//            @Override
-//            public int compare(SearchTreeNode o1, SearchTreeNode o2) {
-//                o1.cost += o1.getCost();
-//                o2.cost += o2.getCost();
-//                return o1.cost - o2.cost;
-//            }
-//        });
-//        ArrayList<String> result = new ArrayList<>();
-//        Map<String, MazeState> transitions;
-//        HashSet<MazeState> graveyard = new HashSet<>();
-//        SearchTreeNode currentNode = null;
-//        boolean hasKey = false;
-//
-//        /*
-//         * need to clean code, maybe create generalized findValue() method?
-//         */
-//
-//        //findKey
-//        frontier.add(new SearchTreeNode(problem.INITIAL_STATE, null, null, 1));
-//        while (!hasKey && !frontier.isEmpty()) {
-//            currentNode = frontier.peek();
-//            graveyard.add(currentNode.state);
-//            if (problem.isKey(currentNode.state)) {
-//                hasKey = true;
-//                result = buildPath(currentNode);
-//                System.out.println("key path: " + result.toString());
-//            }
-//            transitions = problem.getTransitions(currentNode.state);
-//            for (Map.Entry<String, MazeState> action : transitions.entrySet()) {
-//                if (!graveyard.contains(action.getValue()))
-//                    frontier.add(new SearchTreeNode(action.getValue(), action.getKey(), currentNode));
-//            }
-//            frontier.remove(currentNode);
-//        }
-//
-//        frontier.clear();
-//        graveyard.clear();
-//
-//        //findGoal
-//        frontier.add(new SearchTreeNode(currentNode.state, currentNode.action, null, 1));  //need to give null parent for buildPath()
-//        while (!frontier.isEmpty()) {
-//            currentNode = frontier.peek();
-//            graveyard.add(currentNode.state);
-//            if (problem.isGoal(currentNode.state)) {
-//                result.addAll(buildPath(currentNode));
-//                System.out.println("goal path: " + buildPath(currentNode));
-//                return result;
-//            }
-//            transitions = problem.getTransitions(currentNode.state);
-//            for (Map.Entry<String, MazeState> action : transitions.entrySet()) {
-//                if (!graveyard.contains(action.getValue()))
-//                    frontier.add(new SearchTreeNode(action.getValue(), action.getKey(), currentNode));
-//            }
-//            frontier.remove(currentNode);
-//        }
         ArrayList<String> result = findPath(problem, problem.KEY_SET, problem.INITIAL_STATE);
         if (result != null) {
-            ArrayList<String> result2 = findPath(problem, problem.GOAL_STATES, problem.KEY_STATE);
-            result.addAll(result2);
+            ArrayList<String> goalPath = findPath(problem, problem.GOAL_STATES, problem.KEY_STATE);
+            result.addAll(goalPath);
             return result;
         }
         return null;
@@ -97,8 +40,7 @@ public class Pathfinder {
             // may need to change Queue comparator
             @Override
             public int compare(SearchTreeNode o1, SearchTreeNode o2) {
-
-                return (o1.cost + manhatannDist(goal, o1.state)) - (o2.cost + manhatannDist(goal, o2.state));
+                return (o1.cost + manhattanDist(goal, o1.state)) - (o2.cost + manhattanDist(goal, o2.state));
             }
         });
         ArrayList<String> result = new ArrayList<>();
@@ -106,7 +48,7 @@ public class Pathfinder {
         HashSet<MazeState> graveyard = new HashSet<>();
         SearchTreeNode currentNode;
 
-        frontier.add(new SearchTreeNode(initState, null, null, 1));
+        frontier.add(new SearchTreeNode(initState, null, null, 0));
         while (!frontier.isEmpty()) {
             currentNode = frontier.peek();
             graveyard.add(currentNode.state);
@@ -116,7 +58,8 @@ public class Pathfinder {
             transitions = problem.getTransitions(currentNode.state);
             for (Map.Entry<String, MazeState> action : transitions.entrySet()) {
                 if (!graveyard.contains(action.getValue()))
-                    frontier.add(new SearchTreeNode(action.getValue(), action.getKey(), currentNode));
+                    frontier.add(new SearchTreeNode(action.getValue(), action.getKey(), currentNode,
+                            currentNode.cost + problem.getCost(action.getValue())));
             }
             frontier.remove(currentNode);
         }
@@ -140,13 +83,13 @@ public class Pathfinder {
     }
 
     /**
-     * Calculates the Manhatann distance from the current MazeState to the MazeState of the nearest goal.
+     * Calculates the Manhattan distance from the current MazeState to the MazeState of the nearest goal.
      *
      * @param goals   All possible goals in the Maze problem. Finds the closest one.
      * @param current Starting position to use in calculations
      * @return Distance to the goal it detmerines is closest.
      */
-    public static int manhatannDist(HashSet<MazeState> goals, MazeState current) {
+    public static int manhattanDist(HashSet<MazeState> goals, MazeState current) {
         int distance = Integer.MAX_VALUE;
         for (MazeState state : goals) {
             if (Math.abs(state.col - current.col) + Math.abs(state.row - current.row) < distance) {
@@ -190,7 +133,7 @@ class SearchTreeNode {
      * @param state  The MazeState (col, row) that this node represents.
      * @param action The action that *led to* this state / node.
      * @param parent Reference to parent SearchTreeNode in the Search Tree.
-     * @param cost Initial cost that this node should start at.
+     * @param cost   Initial cost that this node should start at.
      */
     SearchTreeNode(MazeState state, String action, SearchTreeNode parent, int cost) {
         this.state = state;

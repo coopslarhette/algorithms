@@ -84,7 +84,7 @@ public class PathfinderTests {
         String[] maze = {
                 "XXXXXXX",
                 "X..I..X",
-                "X.....X",
+                "X..M..X",
                 "X.MMMGX",
                 "X..KX.X",
                 "XXXXXXX"
@@ -94,7 +94,7 @@ public class PathfinderTests {
 
         int[] result = prob.testSolution(solution);
         assertEquals(1, result[0]);  // Test that result is a solution
-        assertEquals(12, result[1]); // Ensure that the solution is optimal
+        assertEquals(14, result[1]); // Ensure that the solution is optimal
     }
 
 }
