@@ -22,10 +22,23 @@ public class NimPlayer {
      * of [1, MAX_REMOVAL]
      */
     public int choose(int remaining) {
-        GameTreeNode root = new GameTreeNode(remaining, 0, true);
+        int resultantAction = 0;
+        int tempScore = 0;
+        GameTreeNode root = new GameTreeNode(remaining, 0, true);  //unsure if action of 0 is correct
         Map<GameTreeNode, Integer> visited = new HashMap<>();
+
         alphaBetaMinimax(root, Integer.MIN_VALUE, Integer.MAX_VALUE, true, visited);
-        return 0;
+        for (GameTreeNode node : root.children) {
+            System.out.println("node action: " + node.action);
+            System.out.println("node score before comparison: " + node.score);
+            if (node.score > tempScore) {
+                tempScore = node.score;
+                resultantAction = node.action;
+                System.out.println("resultant score updated");
+            }
+        }
+        System.out.println("choice right before return: " + resultantAction);
+        return resultantAction;
     }
 
     /**
@@ -42,30 +55,65 @@ public class NimPlayer {
      */
     private int alphaBetaMinimax(GameTreeNode node, int alpha, int beta, boolean isMax, Map<GameTreeNode, Integer> visited) {
         int tempAlpha = Integer.MIN_VALUE;
-        if (node.children.size() == 0)
-            return node.score;
-        if (visited.containsKey(node))
+        System.out.println("node remaining: " + node.remaining);
+        System.out.println("node score: " + node.score);
+
+        if (node.remaining == 0) {
+            System.out.println("terminal " + ((node.isMax) ? 0 : 1));
+            return (node.isMax) ? 0 : 1;
+        }
+        if (visited.containsKey(node)) {
             return visited.get(node);
-        if (isMax /* && something? */) {
+        }
+
+        genChildren(node);  /*there must be an issue with gen children bc node score is updated properly, the score just doesn't make it to
+                             for loop in choose()
+                             I think it might be assigning score and then regenerating children, but idk, then the arraylist would twice as full*/
+        System.out.println("node score: " + node.score);
+        //new computation
+        if (isMax) {
             for (GameTreeNode child : node.children) {
-                tempAlpha = Math.max(tempAlpha, alphaBetaMinimax(child, alpha, beta, false, visited));  //need to add functionality to keep track of what
-                // we have visited
+                tempAlpha = Math.max(tempAlpha, alphaBetaMinimax(child, alpha, beta, false, visited));
+                System.out.println("node score: " + node.score);
                 alpha = Math.max(alpha, tempAlpha);
-                if (beta <= alpha)
+                if (beta <= alpha) {
+                    System.out.println("pruned");
                     break;
+                }
             }
+            System.out.println("node score updated to: " + tempAlpha);
+            node.score = tempAlpha;
+            System.out.println("node score updated: " + node.score);
             visited.put(node, tempAlpha);
             return tempAlpha;
         } else {
             tempAlpha = Integer.MAX_VALUE;
             for (GameTreeNode child : node.children) {
                 tempAlpha = Math.min(tempAlpha, alphaBetaMinimax(child, alpha, beta, true, visited));
+                System.out.println("node score: " + node.score);
                 beta = Math.min(tempAlpha, beta);
-                if (beta <= alpha)
+                if (beta <= alpha) {
+                    System.out.println("pruned");
                     break;
+                }
             }
+            System.out.println("node score updated to: " + tempAlpha);
+            node.score = tempAlpha;
             visited.put(node, tempAlpha);
             return tempAlpha;
+        }
+    }
+
+    /**
+     * Generates children from a parent node based off of how many different possible number of stones a
+     * player can remove.
+     *
+     * @param parent Node children are generated from.
+     */
+    private void genChildren(GameTreeNode parent) {
+        int action = Math.min(MAX_REMOVAL, parent.remaining);
+        for (int i = action; i > 0; i--) {
+            parent.children.add(new GameTreeNode(parent.remaining - i, i, !parent.isMax));
         }
     }
 
