@@ -59,8 +59,11 @@ public class NimPlayer {
         System.out.println("node score: " + node.score);
 
         if (node.remaining == 0) {
+            tempAlpha = (node.isMax) ? 0 : 1;
             System.out.println("terminal " + ((node.isMax) ? 0 : 1));
-            return (node.isMax) ? 0 : 1;
+            node.score = tempAlpha;
+            visited.put(node, tempAlpha);
+            return tempAlpha;
         }
         if (visited.containsKey(node)) {
             return visited.get(node);
@@ -69,7 +72,6 @@ public class NimPlayer {
         genChildren(node);  /*there must be an issue with gen children bc node score is updated properly, the score just doesn't make it to
                              for loop in choose()
                              I think it might be assigning score and then regenerating children, but idk, then the arraylist would twice as full*/
-        System.out.println("node score: " + node.score);
         //new computation
         if (isMax) {
             for (GameTreeNode child : node.children) {
@@ -81,9 +83,8 @@ public class NimPlayer {
                     break;
                 }
             }
-            System.out.println("node score updated to: " + tempAlpha);
             node.score = tempAlpha;
-            System.out.println("node score updated: " + node.score);
+            System.out.println("max-node score updated: " + node.score);
             visited.put(node, tempAlpha);
             return tempAlpha;
         } else {
@@ -97,7 +98,7 @@ public class NimPlayer {
                     break;
                 }
             }
-            System.out.println("node score updated to: " + tempAlpha);
+            System.out.println("min-node score updated to: " + tempAlpha);
             node.score = tempAlpha;
             visited.put(node, tempAlpha);
             return tempAlpha;
