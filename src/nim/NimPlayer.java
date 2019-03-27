@@ -29,15 +29,13 @@ public class NimPlayer {
 
         alphaBetaMinimax(root, Integer.MIN_VALUE, Integer.MAX_VALUE, true, visited);
         for (GameTreeNode node : root.children) {
-            System.out.println("node action: " + node.action);
-            System.out.println("node score before comparison: " + node.score);
+            System.out.println("node score: " + node.score + ", node action: " + node.action);
             if (node.score > tempScore) {
                 tempScore = node.score;
                 resultantAction = node.action;
                 System.out.println("resultant score updated");
             }
         }
-        System.out.println("choice right before return: " + resultantAction);
         return resultantAction;
     }
 
@@ -55,12 +53,9 @@ public class NimPlayer {
      */
     private int alphaBetaMinimax(GameTreeNode node, int alpha, int beta, boolean isMax, Map<GameTreeNode, Integer> visited) {
         int tempAlpha = Integer.MIN_VALUE;
-        System.out.println("node remaining: " + node.remaining);
-        System.out.println("node score: " + node.score);
 
         if (node.remaining == 0) {
             tempAlpha = (node.isMax) ? 0 : 1;
-            System.out.println("terminal " + ((node.isMax) ? 0 : 1));
             node.score = tempAlpha;
             visited.put(node, tempAlpha);
             return tempAlpha;
@@ -68,37 +63,29 @@ public class NimPlayer {
         if (visited.containsKey(node)) {
             return visited.get(node);
         }
+        genChildren(node);
 
-        genChildren(node);  /*there must be an issue with gen children bc node score is updated properly, the score just doesn't make it to
-                             for loop in choose()
-                             I think it might be assigning score and then regenerating children, but idk, then the arraylist would twice as full*/
         //new computation
         if (isMax) {
             for (GameTreeNode child : node.children) {
                 tempAlpha = Math.max(tempAlpha, alphaBetaMinimax(child, alpha, beta, false, visited));
-                System.out.println("node score: " + node.score);
                 alpha = Math.max(alpha, tempAlpha);
                 if (beta <= alpha) {
-                    System.out.println("pruned");
                     break;
                 }
             }
             node.score = tempAlpha;
-            System.out.println("max-node score updated: " + node.score);
             visited.put(node, tempAlpha);
             return tempAlpha;
         } else {
             tempAlpha = Integer.MAX_VALUE;
             for (GameTreeNode child : node.children) {
                 tempAlpha = Math.min(tempAlpha, alphaBetaMinimax(child, alpha, beta, true, visited));
-                System.out.println("node score: " + node.score);
                 beta = Math.min(tempAlpha, beta);
                 if (beta <= alpha) {
-                    System.out.println("pruned");
                     break;
                 }
             }
-            System.out.println("min-node score updated to: " + tempAlpha);
             node.score = tempAlpha;
             visited.put(node, tempAlpha);
             return tempAlpha;
