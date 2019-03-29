@@ -17,15 +17,16 @@ public class LCS {
 
     // [!] TODO: Add your shared helper methods here!
 
-    private static Set<String> collectSolution(String rStr, int r, String cStr, int c, int[][] memo) { //needs debug
+    private static Set<String> collectSolution(String rStr, int r, String cStr, int c, int[][] memo) { //bunch of off by one errors here due to gutter
+        // in table compared to rStr and cStr len
         Set<String> tempSet;
         Set<String> result = new HashSet<>();
         if (r == 0 || c == 0) {
             return new HashSet<>(Collections.singletonList(""));
-        } else if (rStr.charAt(r) == cStr.charAt(c)) {
+        } else if (rStr.charAt(r-1) == cStr.charAt(c-1)) {
             tempSet = collectSolution(rStr, r - 1, cStr, c - 1, memo);
             for (String str : tempSet) {
-                result.add(str + rStr.charAt(r));
+                result.add(str + rStr.charAt(r-1));
             }
             return result;
         } else {
@@ -68,7 +69,7 @@ public class LCS {
             }
         }
         memoCheck = table;
-        return collectSolution(rStr, rStr.length() - 1, cStr, cStr.length() - 1, table);  //should it be length - 1?
+        return collectSolution(rStr, rStr.length(), cStr, cStr.length(), table);  //should it be length - 1?
     }
 
     // [!] TODO: Add any bottom-up specific helpers here!
