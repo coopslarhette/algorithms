@@ -1,9 +1,6 @@
 package lcs;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class LCS {
 
@@ -20,17 +17,17 @@ public class LCS {
 
     // [!] TODO: Add your shared helper methods here!
 
-    private static Set<String> collectSolution(String rStr, int r, String cStr, int c, int[][] memo) {
+    private static Set<String> collectSolution(String rStr, int r, String cStr, int c, int[][] memo) { //needs debug
         Set<String> tempSet;
         Set<String> result = new HashSet<>();
         if (r == 0 || c == 0) {
             return new HashSet<>(Collections.singletonList(""));
         } else if (rStr.charAt(r) == cStr.charAt(c)) {
             tempSet = collectSolution(rStr, r - 1, cStr, c - 1, memo);
-            for (String str : tempSet) {  //will this copy the string or pass pointer thru? maybe cause bug
-                str += rStr.charAt(r);
+            for (String str : tempSet) {
+                result.add(str + rStr.charAt(r));
             }
-            return tempSet;
+            return result;
         } else {
             if (memo[r][c-1] >= memo[r-1][c]) {
                 result.addAll(collectSolution(rStr, r, cStr, c-1, memo));
@@ -61,7 +58,6 @@ public class LCS {
     public static Set<String> bottomUpLCS(String rStr, String cStr) {  //works
         int[][] table = new int[rStr.length() + 1][cStr.length() + 1];
         fillFirstZeros(table);
-        System.out.println("table at fillzero\n" + Arrays.deepToString(table));
         for (int r = 1; r < rStr.length() + 1; r++) {
             for (int c = 1; c < cStr.length() + 1; c++) {
                 if (rStr.charAt(r-1) == cStr.charAt(c-1)) {
@@ -72,8 +68,6 @@ public class LCS {
             }
         }
         memoCheck = table;
-        System.out.println("table right before return: \n" + Arrays.deepToString(table));
-        System.out.println(collectSolution(rStr, rStr.length() - 1, cStr, cStr.length() - 1, table).toString());  //prints whole set
         return collectSolution(rStr, rStr.length() - 1, cStr, cStr.length() - 1, table);  //should it be length - 1?
     }
 
