@@ -207,5 +207,24 @@ public class LCSTests {
                 LCS.memoCheck
         );
     }
+    @Test
+    public void TDLCSTest_t6() {
+        assertEquals(
+                new HashSet<>(Arrays.asList(
+                        "ADH"
+                )),
+                LCS.topDownLCS("ABCDGH", "AEDFHR")
+        );
+    }
+
+    @Test
+    public void TDLCSTest_t7() {
+        assertEquals(
+                new HashSet<>(Arrays.asList(
+                        "GBJNKMLPO"
+                )),
+                LCS.topDownLCS("GBJN1KMLPO", "AGEBDJFNHKRMZLlPSO")
+        );
+    }
 
 }

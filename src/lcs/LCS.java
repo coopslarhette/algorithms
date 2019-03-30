@@ -1,6 +1,12 @@
 package lcs;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
+
+/*
+ * Cooper LaRhette
+ */
 
 public class LCS {
 
@@ -15,8 +21,15 @@ public class LCS {
     // Shared Helper Methods
     // -----------------------------------------------
 
-    // [!] TODO: Add your shared helper methods here!
-
+    /**
+     * Helper method that traces back through memoization table to find any and all LCS subsequences.
+     * @param rStr 1st string to compare
+     * @param r Index of 1st string. Also represents row in the table.
+     * @param cStr 2nd string to compare
+     * @param c Index of 2nd string. Also represents column in the table.
+     * @param memo Memoization table
+     * @return Set of all LCS sequences.
+     */
     private static Set<String> collectSolution(String rStr, int r, String cStr, int c, int[][] memo) {
         Set<String> tempSet;
         Set<String> result = new HashSet<>();
@@ -56,6 +69,19 @@ public class LCS {
      * [Side Effect] sets memoCheck to refer to table
      */
     public static Set<String> bottomUpLCS(String rStr, String cStr) {
+        memoCheck = fillBottomUp(rStr, cStr);
+        return collectSolution(rStr, rStr.length(), cStr, cStr.length(), memoCheck);
+    }
+
+    // [!] TODO: Add any bottom-up specific helpers here!
+
+    /**
+     * Helper method that fills the memoization table with LCS values
+     * @param rStr 1st string to compare
+     * @param cStr 2nd string to compare
+     * @return Memoization table filled out according to bottom-up paradigm.
+     */
+    private static int[][] fillBottomUp(String rStr, String cStr) {
         int[][] table = new int[rStr.length() + 1][cStr.length() + 1];
         for (int r = 1; r < rStr.length() + 1; r++) {
             for (int c = 1; c < cStr.length() + 1; c++) {
@@ -66,27 +92,8 @@ public class LCS {
                 }
             }
         }
-        memoCheck = table;
-        return collectSolution(rStr, rStr.length(), cStr, cStr.length(), table);
+        return table;
     }
-
-    // [!] TODO: Add any bottom-up specific helpers here!
-
-//    /**
-//     * Takes a bottom-up table and fills first row and column with zeroes to make the programming a little
-//     * easier
-//     *
-//     * @param table Table to fill. Note: assumes a single row length for all rows and signle column length
-//     *              for all columns
-//     */
-//    private static void fillZeroes(int[][] table) {
-//        for (int[] arr : table) {
-//            for (int i : arr) {
-//                i = 0;
-//            }
-//        }
-//    }
-
 
     // -----------------------------------------------
     // Top-Down LCS
@@ -106,13 +113,19 @@ public class LCS {
         int[][] table = new int[rStr.length() + 1][cStr.length() + 1];
         table[rStr.length()][cStr.length()] = lcsRecursiveHelper(rStr, rStr.length(), cStr, cStr.length(), table);
         memoCheck = table;
-        System.out.println(Arrays.deepToString(table));
         return collectSolution(rStr, rStr.length(), cStr, cStr.length(), table);
     }
 
+    /**
+     * Recursive helper which determines the length of the LCS and fills out the table according to top-down paradigm.
+     * @param rStr 1st string to compare.
+     * @param r Index of 1st string. Also represents row in the table.
+     * @param cStr 2nd string to compare.
+     * @param c Index of the 2nd string. Also represents column in the table.
+     * @param memo Memoization table to store values of a LCS of certain substrings of cStr and rStr
+     * @return The final value for the LCS.
+     */
     private static int lcsRecursiveHelper(String rStr, int r, String cStr, int c, int[][] memo) {
-        Map<Integer, Map<Integer, Integer>> cache = new HashMap<>();
-        int temp;
         if (r == 0 || c == 0) {
             return 0;
         } else if (rStr.charAt(r - 1) == cStr.charAt(c - 1)) {
@@ -125,7 +138,5 @@ public class LCS {
             return memo[r][c];
         }
     }
-
-    // [!] TODO: Add any top-down specific helpers here!
 
 }
