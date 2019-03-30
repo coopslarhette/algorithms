@@ -1,9 +1,6 @@
 package lcs;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class LCS {
 
@@ -114,14 +111,18 @@ public class LCS {
     }
 
     private static int lcsRecursiveHelper(String rStr, int r, String cStr, int c, int[][] memo) {
+        Map<Integer, Map<Integer, Integer>> cache = new HashMap<>();
+        int temp;
         if (r == 0 || c == 0) {
             return 0;
-        } else if (rStr.charAt(r-1) == cStr.charAt(c-1)) {
-            return 1 + lcsRecursiveHelper(rStr, r-1, cStr, c-1, memo);
+        } else if (rStr.charAt(r - 1) == cStr.charAt(c - 1)) {
+            memo[r][c] = 1 + lcsRecursiveHelper(rStr, r - 1, cStr, c - 1, memo);
+            return memo[r][c];
         } else {
-            memo[r][c-1] = lcsRecursiveHelper(rStr, r, cStr, c-1, memo);
-            memo[r-1][c] = lcsRecursiveHelper(rStr, r-1, cStr, c, memo);
-            return Math.max(memo[r][c-1], memo[r-1][c-1]);
+            memo[r][c - 1] = lcsRecursiveHelper(rStr, r, cStr, c - 1, memo);
+            memo[r - 1][c] = lcsRecursiveHelper(rStr, r - 1, cStr, c, memo);
+            memo[r][c] = Math.max(memo[r - 1][c], memo[r][c - 1]);
+            return memo[r][c];
         }
     }
 
