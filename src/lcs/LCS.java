@@ -1,6 +1,9 @@
 package lcs;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
 
 public class LCS {
 
@@ -17,24 +20,23 @@ public class LCS {
 
     // [!] TODO: Add your shared helper methods here!
 
-    private static Set<String> collectSolution(String rStr, int r, String cStr, int c, int[][] memo) { //bunch of off by one errors here due to gutter
-        // in table compared to rStr and cStr len
+    private static Set<String> collectSolution(String rStr, int r, String cStr, int c, int[][] memo) {
         Set<String> tempSet;
         Set<String> result = new HashSet<>();
         if (r == 0 || c == 0) {
             return new HashSet<>(Collections.singletonList(""));
-        } else if (rStr.charAt(r-1) == cStr.charAt(c-1)) {
+        } else if (rStr.charAt(r - 1) == cStr.charAt(c - 1)) {
             tempSet = collectSolution(rStr, r - 1, cStr, c - 1, memo);
             for (String str : tempSet) {
-                result.add(str + rStr.charAt(r-1));
+                result.add(str + rStr.charAt(r - 1));
             }
             return result;
         } else {
-            if (memo[r][c-1] >= memo[r-1][c]) {
-                result.addAll(collectSolution(rStr, r, cStr, c-1, memo));
+            if (memo[r][c - 1] >= memo[r - 1][c]) {
+                result.addAll(collectSolution(rStr, r, cStr, c - 1, memo));
             }
-            if (memo[r - 1][c] >= memo[r][c-1]) {
-                result.addAll(collectSolution(rStr, r-1, cStr, c, memo));
+            if (memo[r - 1][c] >= memo[r][c - 1]) {
+                result.addAll(collectSolution(rStr, r - 1, cStr, c, memo));
             }
             return result;
         }
@@ -56,12 +58,11 @@ public class LCS {
      * @return The longest common subsequence between rStr and cStr +
      * [Side Effect] sets memoCheck to refer to table
      */
-    public static Set<String> bottomUpLCS(String rStr, String cStr) {  //works
+    public static Set<String> bottomUpLCS(String rStr, String cStr) {
         int[][] table = new int[rStr.length() + 1][cStr.length() + 1];
-        fillFirstZeros(table);
         for (int r = 1; r < rStr.length() + 1; r++) {
             for (int c = 1; c < cStr.length() + 1; c++) {
-                if (rStr.charAt(r-1) == cStr.charAt(c-1)) {
+                if (rStr.charAt(r - 1) == cStr.charAt(c - 1)) {
                     table[r][c] = 1 + table[r - 1][c - 1];
                 } else {
                     table[r][c] = Math.max(table[r - 1][c], table[r][c - 1]);
@@ -69,26 +70,25 @@ public class LCS {
             }
         }
         memoCheck = table;
-        return collectSolution(rStr, rStr.length(), cStr, cStr.length(), table);  //should it be length - 1?
+        return collectSolution(rStr, rStr.length(), cStr, cStr.length(), table);
     }
 
     // [!] TODO: Add any bottom-up specific helpers here!
 
-    /**
-     * Takes a bottom-up table and fills first row and column with zeroes to make the programming a little
-     * easier
-     *
-     * @param table Table to fill. Note: assumes a single row length for all rows and signle column length
-     *              for all columns
-     */
-    private static void fillFirstZeros(int[][] table) {
-        for (int r = 0; r < table.length; r++) {
-            table[r][0] = 0;
-        }
-        for (int c = 0; c < table[0].length; c++) {
-            table[0][c] = 0;
-        }
-    }
+//    /**
+//     * Takes a bottom-up table and fills first row and column with zeroes to make the programming a little
+//     * easier
+//     *
+//     * @param table Table to fill. Note: assumes a single row length for all rows and signle column length
+//     *              for all columns
+//     */
+//    private static void fillZeroes(int[][] table) {
+//        for (int[] arr : table) {
+//            for (int i : arr) {
+//                i = 0;
+//            }
+//        }
+//    }
 
 
     // -----------------------------------------------
@@ -106,11 +106,25 @@ public class LCS {
      * [Side Effect] sets memoCheck to refer to table
      */
     public static Set<String> topDownLCS(String rStr, String cStr) {
+        int[][] table = new int[rStr.length() + 1][cStr.length() + 1];
+        table[rStr.length()][cStr.length()] = lcsRecursiveHelper(rStr, rStr.length(), cStr, cStr.length(), table);
+        memoCheck = table;
+        System.out.println(Arrays.deepToString(table));
+        return collectSolution(rStr, rStr.length(), cStr, cStr.length(), table);
+    }
 
-        throw new UnsupportedOperationException();
+    private static int lcsRecursiveHelper(String rStr, int r, String cStr, int c, int[][] memo) {
+        if (r == 0 || c == 0) {
+            return 0;
+        } else if (rStr.charAt(r-1) == cStr.charAt(c-1)) {
+            return 1 + lcsRecursiveHelper(rStr, r-1, cStr, c-1, memo);
+        } else {
+            memo[r][c-1] = lcsRecursiveHelper(rStr, r, cStr, c-1, memo);
+            memo[r-1][c] = lcsRecursiveHelper(rStr, r-1, cStr, c, memo);
+            return Math.max(memo[r][c-1], memo[r-1][c-1]);
+        }
     }
 
     // [!] TODO: Add any top-down specific helpers here!
-
 
 }
