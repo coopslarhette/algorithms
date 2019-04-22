@@ -1,5 +1,6 @@
 package huffman;
 
+import java.io.ByteArrayOutputStream;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -17,7 +18,7 @@ public class Huffman {
     // -----------------------------------------------
 
     private HuffNode trieRoot;
-    Map<Character, String> encodingMap;
+    protected Map<Character, String> encodingMap;
 
     /**
      * Creates the Huffman Trie and Encoding Map using the character
@@ -86,7 +87,21 @@ public class Huffman {
      * 0-padding on the final byte.
      */
     public byte[] compress(String message) {
-        throw new UnsupportedOperationException();
+        ByteArrayOutputStream s = new ByteArrayOutputStream();
+        StringBuilder temp = new StringBuilder();
+        s.write((byte) message.length());
+        for (int i = 0; i < message.length(); i++) {
+            temp.append(encodingMap.get(message.charAt(i)));
+        }
+        if (temp.length() % 8 != 0) {
+            for (int i = 0; i < temp.length() % 8; i++) {
+                temp.append("0");
+            }
+        }
+        for (int i = 0; i < temp.length(); i += 8) {
+            s.write(Integer.parseInt(temp.substring(i, i + 8), 2));
+        }
+        return s.toByteArray();
     }
 
 
