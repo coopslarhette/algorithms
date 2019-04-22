@@ -4,6 +4,21 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class HuffmanTests {
+
+    @Test
+    public void constructT0() {
+        Huffman h = new Huffman("AB");
+        assertEquals(0, Integer.parseInt(h.encodingMap.get('A')));
+        assertEquals(1, Integer.parseInt(h.encodingMap.get('B')));
+    }
+
+    @Test
+    public void constructT1() {
+        Huffman h = new Huffman("ACADACBABE");
+        assertEquals(22, (h.encodingMap.get('A') + h.encodingMap.get('C') + h.encodingMap.get('A') + h.encodingMap.get('D')+
+                h.encodingMap.get('A') + h.encodingMap.get('C') + h.encodingMap.get('B') + h.encodingMap.get('A') + h.encodingMap.get('B')
+                + h.encodingMap.get('E')).length());
+    }
     
     // Compression Tests
     // -----------------------------------------------

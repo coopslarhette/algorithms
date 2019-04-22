@@ -17,7 +17,7 @@ public class Huffman {
     // -----------------------------------------------
 
     private HuffNode trieRoot;
-    private Map<Character, String> encodingMap;
+    Map<Character, String> encodingMap;
 
     /**
      * Creates the Huffman Trie and Encoding Map using the character
@@ -34,7 +34,7 @@ public class Huffman {
         HuffNode currNode;
         for (int i = 0; i < corpus.length(); i++) {
             Character currChar = corpus.charAt(i);
-            if (charCounts.get(currChar) == null) {
+            if (charCounts.get(currChar) == null) {  //may fix this later
                 charCounts.put(currChar, 1);
             } else {
                 charCounts.put(currChar, charCounts.get(currChar) + 1);
@@ -57,16 +57,16 @@ public class Huffman {
         trieRoot = trieQ.poll();
         //encoding map
         encodingMap = new HashMap<>(charCounts.size());
-        for (Map.Entry<Character, Integer> entry : charCounts.entrySet()) {
-            encodingMap.put(entry.getKey(), encodeChar(trieRoot, entry.getKey(), ""));
-        }
+        encodeChar(trieRoot, "");
     }
 
-    private String encodeChar(HuffNode root, char value, String result) { //need to implement DFS here
-        if (root.character == value) {
-            return result;
+    private void encodeChar(HuffNode root, String result) { //need to implement DFS here
+        if (root.left == null && root.right == null) {
+            encodingMap.put(root.character, result);
+        } else {
+            encodeChar(root.left, result + "0");
+            encodeChar(root.right, result + "1");
         }
-        return "";
     }
 
     // -----------------------------------------------
