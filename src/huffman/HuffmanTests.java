@@ -50,9 +50,6 @@ public class HuffmanTests {
         // byte 2: 1000 0000 = -128
         // [!] Only first bit of byte 2 is meaningful
         byte[] compressed = {6, -121, -128};
-        for (byte b : h.compress("ABBBCC")) {
-            System.out.println(b);
-        }
         assertArrayEquals(compressed, h.compress("ABBBCC"));
     }
     

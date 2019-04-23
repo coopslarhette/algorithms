@@ -1,6 +1,7 @@
 package huffman;
 
 import java.io.ByteArrayOutputStream;
+import java.time.temporal.ChronoUnit;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -87,9 +88,9 @@ public class Huffman {
      * 0-padding on the final byte.
      */
     public byte[] compress(String message) {
-        ByteArrayOutputStream s = new ByteArrayOutputStream();
+        ByteArrayOutputStream result = new ByteArrayOutputStream();
         StringBuilder temp = new StringBuilder();
-        s.write((byte) message.length());
+        result.write((byte) message.length());
         for (int i = 0; i < message.length(); i++) {
             temp.append(encodingMap.get(message.charAt(i)));
         }
@@ -99,9 +100,9 @@ public class Huffman {
             }
         }
         for (int i = 0; i < temp.length(); i += 8) {
-            s.write(Integer.parseInt(temp.substring(i, i + 8), 2));
+            result.write(Integer.parseInt(temp.substring(i, i + 8), 2));
         }
-        return s.toByteArray();
+        return result.toByteArray();
     }
 
 
@@ -122,9 +123,25 @@ public class Huffman {
      * @return Decompressed String representation of the compressed bytecode message.
      */
     public String decompress(byte[] compressedMsg) {
-        throw new UnsupportedOperationException();
+        StringBuilder tempByteCode = new StringBuilder(); //it may be faster to toString this and then use charAt we will see
+        StringBuilder result = new StringBuilder();
+        HuffNode currNode = trieRoot;
+        for (int i = 1; i < compressedMsg.length; i++) {
+            tempByteCode.append(Integer.toString(compressedMsg[i], 2));
+        }
+        for (int i = 0; result.length() < compressedMsg[0] && i <tempByteCode.length(); i++) {
+            while (currNode.right != null && currNode.left != null) {  //may need to change terminal condition here
+                if (tempByteCode.charAt(i) == 0) {
+                    currNode = currNode.left;
+                } else {
+                    currNode = currNode.right;
+                }
+            }
+            result.append(currNode.character);
+            currNode = trieRoot;
+        }
+        return result.toString();
     }
-
 
     // -----------------------------------------------
     // Huffman Trie
