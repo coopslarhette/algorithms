@@ -32,31 +32,23 @@ public class Huffman {
      */
     Huffman(String corpus) {
         HashMap<Character, Integer> charCounts = new HashMap<>();
-        HuffNode currNode;
         for (int i = 0; i < corpus.length(); i++) {
             Character currChar = corpus.charAt(i);
-            if (charCounts.get(currChar) == null) {  //may fix this later
-                charCounts.put(currChar, 1);
-            } else {
-                charCounts.put(currChar, charCounts.get(currChar) + 1);
-            }
+            charCounts.merge(currChar, 1, (a, b) -> a + b);
         }
-        //filling priority queue
         PriorityQueue<HuffNode> trieQ = new PriorityQueue<>(charCounts.size(), HuffNode::compareTo);
         for (Map.Entry<Character, Integer> entry : charCounts.entrySet()) {
             trieQ.add(new HuffNode(entry.getKey(), entry.getValue()));
         }
-        //building trie
         while (trieQ.size() > 1) {
             HuffNode left = trieQ.poll();
             HuffNode right = trieQ.poll();
-            HuffNode newNode = new HuffNode('\0', left.count + Objects.requireNonNull(right).count);
+            HuffNode newNode = new HuffNode('\0', left.count + right.count);
             newNode.left = left;
             newNode.right = right;
             trieQ.add(newNode);
         }
         trieRoot = trieQ.poll();
-        //encoding map
         encodingMap = new HashMap<>(charCounts.size());
         encodeChar(trieRoot, "");
     }
@@ -88,18 +80,18 @@ public class Huffman {
      */
     public byte[] compress(String message) {
         ByteArrayOutputStream result = new ByteArrayOutputStream();
-        StringBuilder temp = new StringBuilder();
+        StringBuilder tempBitString = new StringBuilder();
         for (int i = 0; i < message.length(); i++) {
-            temp.append(encodingMap.get(message.charAt(i)));
+            tempBitString.append(encodingMap.get(message.charAt(i)));
         }
         result.write(message.length());
-        if (temp.length() % 8 != 0) {
-            for (int i = 0; i < temp.length() % 8; i++) {
-                temp.append("0");
+        if (tempBitString.length() % 8 != 0) {
+            for (int i = 0; i < tempBitString.length() % 8; i++) {
+                tempBitString.append("0");
             }
         }
-        for (int i = 0; i < temp.length(); i += 8) {
-            result.write(Integer.parseInt(temp.substring(i, i + 8), 2));
+        for (int i = 0; i < tempBitString.length(); i += 8) {
+            result.write(Integer.parseInt(tempBitString.substring(i, i + 8), 2));
         }
         return result.toByteArray();
     }
