@@ -1,7 +1,6 @@
 package huffman;
 
 import java.io.ByteArrayOutputStream;
-import java.time.temporal.ChronoUnit;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -62,12 +61,12 @@ public class Huffman {
         encodeChar(trieRoot, "");
     }
 
-    private void encodeChar(HuffNode root, String result) { //need to implement DFS here
+    private void encodeChar(HuffNode root, String bitString) {
         if (root.left == null && root.right == null) {
-            encodingMap.put(root.character, result);
+            encodingMap.put(root.character, bitString);
         } else {
-            encodeChar(root.left, result + "0");
-            encodeChar(root.right, result + "1");
+            encodeChar(root.left, bitString + "0");
+            encodeChar(root.right, bitString + "1");
         }
     }
 
@@ -90,10 +89,10 @@ public class Huffman {
     public byte[] compress(String message) {
         ByteArrayOutputStream result = new ByteArrayOutputStream();
         StringBuilder temp = new StringBuilder();
-        result.write((byte) message.length());
         for (int i = 0; i < message.length(); i++) {
             temp.append(encodingMap.get(message.charAt(i)));
         }
+        result.write(message.length());
         if (temp.length() % 8 != 0) {
             for (int i = 0; i < temp.length() % 8; i++) {
                 temp.append("0");
@@ -123,24 +122,29 @@ public class Huffman {
      * @return Decompressed String representation of the compressed bytecode message.
      */
     public String decompress(byte[] compressedMsg) {
-        StringBuilder tempByteCode = new StringBuilder(); //it may be faster to toString this and then use charAt we will see
+        String bitString = buildBitString(compressedMsg);
         StringBuilder result = new StringBuilder();
         HuffNode currNode = trieRoot;
-        for (int i = 1; i < compressedMsg.length; i++) {
-            tempByteCode.append(Integer.toString(compressedMsg[i], 2));
-        }
-        for (int i = 0; result.length() < compressedMsg[0] && i <tempByteCode.length(); i++) {
-            while (currNode.right != null && currNode.left != null) {  //may need to change terminal condition here
-                if (tempByteCode.charAt(i) == 0) {
-                    currNode = currNode.left;
-                } else {
-                    currNode = currNode.right;
-                }
+        for (int i = 0; i < bitString.length() && result.length() < compressedMsg[0]; i++) {
+            if (currNode.left == null && currNode.right == null) {
+                result.append(currNode.character);
+                currNode = trieRoot;
             }
-            result.append(currNode.character);
-            currNode = trieRoot;
+            if (bitString.charAt(i) == '0') {
+                currNode = currNode.left;
+            } else {
+                currNode = currNode.right;
+            }
         }
         return result.toString();
+    }
+
+    private String buildBitString(byte[] compressedMsg) {
+        StringBuilder tempByteCode = new StringBuilder();
+        for (int i = 1; i < compressedMsg.length; i++) {
+            tempByteCode.append(String.format("%8s", Integer.toBinaryString(compressedMsg[i] & 0xFF)).replace(' ', '0'));
+        }
+        return tempByteCode.toString();
     }
 
     // -----------------------------------------------
