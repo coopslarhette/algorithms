@@ -3,7 +3,6 @@ package huffman;
 import java.io.ByteArrayOutputStream;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.PriorityQueue;
 
 /**
@@ -53,6 +52,12 @@ public class Huffman {
         encodeChar(trieRoot, "");
     }
 
+    /**
+     * Fills encodingMap used to compress by traversing the Huffman Trie.
+     *
+     * @param root      Root of the trie.
+     * @param bitString bitString that will start out as an empty String and be used for each binary encoding for each character.
+     */
     private void encodeChar(HuffNode root, String bitString) {
         if (root.left == null && root.right == null) {
             encodingMap.put(root.character, bitString);
@@ -131,6 +136,12 @@ public class Huffman {
         return result.toString();
     }
 
+    /**
+     * Builds bitString from compressed byte array.
+     *
+     * @param compressedMsg Byte array that is built through compressing the original message.
+     * @return The bitString used for traversing the trie for purpose of decompression.
+     */
     private String buildBitString(byte[] compressedMsg) {
         StringBuilder tempByteCode = new StringBuilder();
         for (int i = 1; i < compressedMsg.length; i++) {

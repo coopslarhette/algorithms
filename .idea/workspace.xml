@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c1f96635-4069-40ac-8a79-2404ebdfc064" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/pathfinder/informed/Pathfinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pathfinder/informed/Pathfinder.java" afterDir="false" />
+    <list default="true" id="c1f96635-4069-40ac-8a79-2404ebdfc064" name="Default Changelist" comment="adds working decompression code, need to test a bit further">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -13,33 +13,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pathfinder/informed/MazeProblem.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-634">
-              <caret line="93" column="25" selection-start-line="93" selection-start-column="25" selection-end-line="93" selection-end-column="25" />
-              <folding>
-                <element signature="e#4455#4456#0" expanded="true" />
-                <element signature="e#4501#4502#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/pathfinder/informed/Pathfinder.java">
+        <entry file="file://$PROJECT_DIR$/src/huffman/Huffman.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="253">
-              <caret line="81" column="36" selection-start-line="81" selection-start-column="36" selection-end-line="81" selection-end-column="36" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pathfinder/informed/PathfinderTests.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="475">
-              <caret line="138" column="22" selection-start-line="138" selection-start-column="22" selection-end-line="138" selection-end-column="22" />
+            <state relative-caret-position="-184">
+              <caret line="93" column="27" selection-start-line="93" selection-start-column="27" selection-end-line="93" selection-end-column="27" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -48,9 +26,11 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pathfinder/informed/MazeState.java">
+        <entry file="file://$PROJECT_DIR$/src/huffman/HuffmanTests.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-155" />
+            <state relative-caret-position="-35">
+              <caret line="70" column="11" selection-start-line="70" selection-start-column="11" selection-end-line="70" selection-end-column="11" />
+            </state>
           </provider>
         </entry>
       </file>
@@ -64,6 +44,13 @@
       <find>pastcost</find>
       <find>cost</find>
       <find>result</find>
+      <find>fillFirstZer</find>
+      <find>fillFirstZeros</find>
+      <find>counts</find>
+      <find>newNode</find>
+      <find>currenten</find>
+      <find>s</find>
+      <find>temp</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -86,6 +73,14 @@
         <option value="$PROJECT_DIR$/src/pathfinder/informed/MazeProblem.java" />
         <option value="$PROJECT_DIR$/src/pathfinder/informed/PathfinderTests.java" />
         <option value="$PROJECT_DIR$/src/pathfinder/informed/Pathfinder.java" />
+        <option value="$PROJECT_DIR$/src/pathfinder/informed/MazeProblemSolution.java" />
+        <option value="$PROJECT_DIR$/src/pathfinder/informed/PathfinderSolutionTests.java" />
+        <option value="$PROJECT_DIR$/src/nim/NimPlayerTests.java" />
+        <option value="$PROJECT_DIR$/src/nim/NimPlayer.java" />
+        <option value="$PROJECT_DIR$/src/lcs/LCSTests.java" />
+        <option value="$PROJECT_DIR$/src/lcs/LCS.java" />
+        <option value="$PROJECT_DIR$/src/huffman/HuffmanTests.java" />
+        <option value="$PROJECT_DIR$/src/huffman/Huffman.java" />
       </list>
     </option>
   </component>
@@ -99,7 +94,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -116,19 +110,13 @@
               <item name="Algorithms" type="b2602c69:ProjectViewProjectNode" />
               <item name="Algorithms" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="pathfinder" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Algorithms" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Algorithms" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="pathfinder" type="462c0819:PsiDirectoryNode" />
-              <item name="informed" type="462c0819:PsiDirectoryNode" />
+              <item name="huffman" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -139,14 +127,14 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549946421377" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556162822016" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.tools" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -165,47 +153,75 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.PathfinderTests (1)">
-    <configuration name="PathfinderTests (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.HuffmanTests">
+    <configuration name="NimGame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="nim.NimGame" />
       <module name="Algorithms" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="pathfinder.informed.*" />
+          <option name="PATTERN" value="nim.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="pathfinder.informed" />
-      <option name="MAIN_CLASS_NAME" value="pathfinder.informed.PathfinderTests" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="HuffmanTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Algorithms" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="huffman.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="huffman" />
+      <option name="MAIN_CLASS_NAME" value="huffman.HuffmanTests" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PathfinderTests (2)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="LCSTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Algorithms" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="pathfinder.uninformed.*" />
+          <option name="PATTERN" value="lcs.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="pathfinder.uninformed" />
-      <option name="MAIN_CLASS_NAME" value="pathfinder.uninformed.PathfinderTests" />
+      <option name="PACKAGE_NAME" value="lcs" />
+      <option name="MAIN_CLASS_NAME" value="lcs.LCSTests" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PathfinderTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="LCSTestsForney" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Algorithms" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Classwork1.*" />
+          <option name="PATTERN" value="lcs.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="Classwork1" />
-      <option name="MAIN_CLASS_NAME" value="Classwork1.PathfinderTests" />
+      <option name="PACKAGE_NAME" value="lcs" />
+      <option name="MAIN_CLASS_NAME" value="lcs.LCSTestsForney" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="NimPlayerTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Algorithms" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="nim.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="nim" />
+      <option name="MAIN_CLASS_NAME" value="nim.NimPlayerTests" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -213,9 +229,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.PathfinderTests (1)" />
-        <item itemvalue="JUnit.PathfinderTests (2)" />
-        <item itemvalue="JUnit.PathfinderTests" />
+        <item itemvalue="JUnit.HuffmanTests" />
+        <item itemvalue="JUnit.LCSTestsForney" />
+        <item itemvalue="JUnit.LCSTests" />
+        <item itemvalue="JUnit.NimPlayerTests" />
+        <item itemvalue="Application.NimGame" />
       </list>
     </recent_temporary>
   </component>
@@ -239,7 +257,22 @@
       <workItem from="1548712304098" duration="345000" />
       <workItem from="1548959291580" duration="6002000" />
       <workItem from="1549671124921" duration="10072000" />
-      <workItem from="1549855811183" duration="19417000" />
+      <workItem from="1549855811183" duration="19642000" />
+      <workItem from="1550092205763" duration="291000" />
+      <workItem from="1550517803354" duration="385000" />
+      <workItem from="1550698121501" duration="98000" />
+      <workItem from="1551123854457" duration="1601000" />
+      <workItem from="1551142029630" duration="2290000" />
+      <workItem from="1551374636695" duration="285000" />
+      <workItem from="1551377710569" duration="13895000" />
+      <workItem from="1551575787797" duration="6754000" />
+      <workItem from="1553552781760" duration="637000" />
+      <workItem from="1553711358824" duration="3627000" />
+      <workItem from="1553824499556" duration="19330000" />
+      <workItem from="1554148543654" duration="417000" />
+      <workItem from="1554256814872" duration="128000" />
+      <workItem from="1554751377827" duration="1868000" />
+      <workItem from="1555797617726" duration="23434000" />
     </task>
     <task id="LOCAL-00001" summary="refactor">
       <created>1548276589136</created>
@@ -276,48 +309,203 @@
       <option name="project" value="LOCAL" />
       <updated>1549946325825</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="adds forney's tests">
+      <created>1550518064251</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1550518064252</updated>
+    </task>
+    <task id="LOCAL-00007" summary="adds nim skeleton code files">
+      <created>1551125379807</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1551125379808</updated>
+    </task>
+    <task id="LOCAL-00008" summary="adds partially-complete code for a-b pruning">
+      <created>1551407522904</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1551407522904</updated>
+    </task>
+    <task id="LOCAL-00009" summary="making progress, still incomplete">
+      <created>1551579366817</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1551579366818</updated>
+    </task>
+    <task id="LOCAL-00010" summary="more progress, more test coverage">
+      <created>1551599050728</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1551599050728</updated>
+    </task>
+    <task id="LOCAL-00011" summary="init commit for LCS package">
+      <created>1553712138745</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1553712138745</updated>
+    </task>
+    <task id="LOCAL-00012" summary="nim uncompleted :(">
+      <created>1553712241855</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1553712241855</updated>
+    </task>
+    <task id="LOCAL-00013" summary="adds bottom up LCS completely working, collectSolution needs tweaks">
+      <created>1553887978071</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1553887978071</updated>
+    </task>
+    <task id="LOCAL-00014" summary="adds fix for issue with set iteration and modification, still not passing all tests">
+      <created>1553899527372</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1553899527373</updated>
+    </task>
+    <task id="LOCAL-00015" summary="adds fixes for off by one errors, collectSolution() should be completely functional">
+      <created>1553901992854</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1553901992854</updated>
+    </task>
+    <task id="LOCAL-00016" summary="fixes issue where it doesn't find lcs, still not constructing correct table (finds correct lcs tho...)">
+      <created>1553922631897</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1553922631897</updated>
+    </task>
+    <task id="LOCAL-00017" summary="code passing all tests, need to add memoization, adds 1 test">
+      <created>1553926542583</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1553926542583</updated>
+    </task>
+    <task id="LOCAL-00018" summary="code complete and submitted">
+      <created>1553929292642</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1553929292642</updated>
+    </task>
+    <task id="LOCAL-00019" summary="adds forney's tests">
+      <created>1554751789768</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1554751789769</updated>
+    </task>
+    <task id="LOCAL-00020" summary="cleaned up todos">
+      <created>1554751820656</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1554751820656</updated>
+    </task>
+    <task id="LOCAL-00021" summary="init commit for huffman">
+      <created>1554751868901</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1554751868901</updated>
+    </task>
+    <task id="LOCAL-00022" summary="adds most of huffman trie and map constructor, still need to implement DFS for encoding map">
+      <created>1555812156569</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1555812156569</updated>
+    </task>
+    <task id="LOCAL-00023" summary="adds working construction code and a couple tests">
+      <created>1555906030123</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1555906030123</updated>
+    </task>
+    <task id="LOCAL-00024" summary="adds working compression code, modifies tests slightly">
+      <created>1555961135047</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1555961135047</updated>
+    </task>
+    <task id="LOCAL-00025" summary="adds decompression code, its not working yet, changes a few tests">
+      <created>1555995698363</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1555995698363</updated>
+    </task>
+    <task id="LOCAL-00026" summary="adds working decompression code, need to test a bit further">
+      <created>1556139962869</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1556139962869</updated>
+    </task>
+    <task id="LOCAL-00027" summary="code completed and polished">
+      <created>1556140813746</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1556140813746</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="PathfinderTests_(1) - 2019.02.11 at 20h 10m 39s.xml">
-      <configuration name="PathfinderTests (1)" configurationId="JUnit" />
+    <history-entry file="HuffmanTests - 2019.04.24 at 14h 00m 57s.xml">
+      <configuration name="HuffmanTests" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PathfinderTests_(1) - 2019.02.11 at 20h 11m 28s.xml">
-      <configuration name="PathfinderTests (1)" configurationId="JUnit" />
+    <history-entry file="HuffmanTests - 2019.04.24 at 14h 02m 35s.xml">
+      <configuration name="HuffmanTests" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PathfinderTests_(1) - 2019.02.11 at 20h 12m 47s.xml">
-      <configuration name="PathfinderTests (1)" configurationId="JUnit" />
+    <history-entry file="HuffmanTests - 2019.04.24 at 14h 02m 49s.xml">
+      <configuration name="HuffmanTests" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PathfinderTests_(1) - 2019.02.11 at 20h 13m 37s.xml">
-      <configuration name="PathfinderTests (1)" configurationId="JUnit" />
+    <history-entry file="HuffmanTests - 2019.04.24 at 14h 04m 05s.xml">
+      <configuration name="HuffmanTests" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PathfinderTests_(1) - 2019.02.11 at 20h 17m 02s.xml">
-      <configuration name="PathfinderTests (1)" configurationId="JUnit" />
+    <history-entry file="HuffmanTests - 2019.04.24 at 14h 04m 21s.xml">
+      <configuration name="HuffmanTests" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PathfinderTests_(1) - 2019.02.11 at 20h 22m 41s.xml">
-      <configuration name="PathfinderTests (1)" configurationId="JUnit" />
+    <history-entry file="HuffmanTests - 2019.04.24 at 14h 04m 48s.xml">
+      <configuration name="HuffmanTests" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PathfinderTests_(1) - 2019.02.11 at 20h 30m 06s.xml">
-      <configuration name="PathfinderTests (1)" configurationId="JUnit" />
+    <history-entry file="HuffmanTests - 2019.04.24 at 14h 13m 57s.xml">
+      <configuration name="HuffmanTests" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PathfinderTests_(1) - 2019.02.11 at 20h 34m 24s.xml">
-      <configuration name="PathfinderTests (1)" configurationId="JUnit" />
+    <history-entry file="HuffmanTests - 2019.04.24 at 14h 14m 16s.xml">
+      <configuration name="HuffmanTests" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PathfinderTests_(1) - 2019.02.11 at 20h 34m 52s.xml">
-      <configuration name="PathfinderTests (1)" configurationId="JUnit" />
+    <history-entry file="HuffmanTests - 2019.04.24 at 14h 14m 59s.xml">
+      <configuration name="HuffmanTests" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PathfinderTests_(1) - 2019.02.11 at 20h 37m 12s.xml">
-      <configuration name="PathfinderTests (1)" configurationId="JUnit" />
+    <history-entry file="HuffmanTests - 2019.04.24 at 14h 19m 09s.xml">
+      <configuration name="HuffmanTests" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="46354000" />
+    <option name="totallyTimeSpent" value="121619000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24175824" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26007327" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -335,9 +523,9 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32959184" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.32959184" />
-      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" weight="0.32959184" />
       <window_info anchor="bottom" id="Duplicate detector" order="12" weight="0.32959184" />
-      <window_info anchor="bottom" id="Messages" order="13" weight="0.32959184" />
+      <window_info anchor="bottom" id="Messages" order="13" weight="0.25408164" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.24969475" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -353,12 +541,32 @@
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="refactor" />
     <MESSAGE value="code complete, added a few tests" />
     <MESSAGE value="refactors and adds informed package" />
     <MESSAGE value="adds getCost functionality and updates part of solve() for priority queue" />
     <MESSAGE value="further beautifying, submitted" />
-    <option name="LAST_COMMIT_MESSAGE" value="further beautifying, submitted" />
+    <MESSAGE value="adds nim skeleton code files" />
+    <MESSAGE value="adds partially-complete code for a-b pruning" />
+    <MESSAGE value="making progress, still incomplete" />
+    <MESSAGE value="more progress, more test coverage" />
+    <MESSAGE value="init commit for LCS package" />
+    <MESSAGE value="nim uncompleted :(" />
+    <MESSAGE value="adds bottom up LCS completely working, collectSolution needs tweaks" />
+    <MESSAGE value="adds fix for issue with set iteration and modification, still not passing all tests" />
+    <MESSAGE value="adds fixes for off by one errors, collectSolution() should be completely functional" />
+    <MESSAGE value="fixes issue where it doesn't find lcs, still not constructing correct table (finds correct lcs tho...)" />
+    <MESSAGE value="code passing all tests, need to add memoization, adds 1 test" />
+    <MESSAGE value="code complete and submitted" />
+    <MESSAGE value="adds forney's tests" />
+    <MESSAGE value="cleaned up todos" />
+    <MESSAGE value="init commit for huffman" />
+    <MESSAGE value="adds most of huffman trie and map constructor, still need to implement DFS for encoding map" />
+    <MESSAGE value="adds working construction code and a couple tests" />
+    <MESSAGE value="adds working compression code, modifies tests slightly" />
+    <MESSAGE value="adds decompression code, its not working yet, changes a few tests" />
+    <MESSAGE value="adds working decompression code, need to test a bit further" />
+    <MESSAGE value="code completed and polished" />
+    <option name="LAST_COMMIT_MESSAGE" value="code completed and polished" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -400,25 +608,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pathfinder/informed/MazeProblem.java">
+    <entry file="file://$PROJECT_DIR$/src/pathfinder/informed/PathfinderSolutionTests.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-634">
-          <caret line="93" column="25" selection-start-line="93" selection-start-column="25" selection-end-line="93" selection-end-column="25" />
-          <folding>
-            <element signature="e#4455#4456#0" expanded="true" />
-            <element signature="e#4501#4502#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="-1078">
+          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pathfinder/informed/MazeState.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-155" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pathfinder/informed/PathfinderTests.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
+        <state relative-caret-position="903">
           <caret line="138" column="22" selection-start-line="138" selection-start-column="22" selection-end-line="138" selection-end-column="22" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -426,10 +625,117 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/pathfinder/informed/MazeState.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pathfinder/informed/MazeProblemSolution.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1797">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pathfinder/informed/MazeProblem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1350">
+          <caret line="93" column="25" selection-start-line="93" selection-start-column="25" selection-end-line="93" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Downloads/Pathfinder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-268" />
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Downloads/Pathfinder (1).java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="369">
+          <caret line="45" column="24" selection-start-line="45" selection-start-column="24" selection-end-line="45" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Downloads/pathfinder 2/informed/Pathfinder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-48" />
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Downloads/Pathfinder (2).java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-368" />
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Downloads/cmsi-282-hw1-grading (1)/MazeProblemSolution.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1932" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nim/NimGame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/LCS.java" />
+    <entry file="file://$PROJECT_DIR$/src/nim/NimPlayerTests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="9" column="38" selection-start-line="9" selection-start-column="38" selection-end-line="9" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nim/NimPlayer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="36" column="13" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/pathfinder/informed/Pathfinder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="81" column="36" selection-start-line="81" selection-start-column="36" selection-end-line="81" selection-end-column="36" />
+        <state relative-caret-position="675">
+          <caret line="45" column="74" selection-start-line="45" selection-start-column="74" selection-end-line="45" selection-end-column="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/lcs/LCSTestsForney.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/lcs/LCSTests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="903">
+          <caret line="223" column="34" selection-start-line="223" selection-start-column="34" selection-end-line="223" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/lcs/LCS.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-485">
+          <caret line="73" column="5" selection-start-line="73" selection-start-column="5" selection-end-line="73" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/huffman/HuffmanTests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-35">
+          <caret line="70" column="11" selection-start-line="70" selection-start-column="11" selection-end-line="70" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/huffman/Huffman.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-184">
+          <caret line="93" column="27" selection-start-line="93" selection-start-column="27" selection-end-line="93" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
