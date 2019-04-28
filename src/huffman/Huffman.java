@@ -5,6 +5,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.PriorityQueue;
 
+/*
+ * Author: Cooper LaRhette
+ */
+
 /**
  * Huffman instances provide reusable Huffman Encoding Maps for
  * compressing and decompressing text corpi with comparable
