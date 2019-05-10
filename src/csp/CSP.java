@@ -10,6 +10,7 @@ import java.util.Set;
  * Provides a solution for scheduling some n meetings in a given
  * period of time and according to some unary and binary constraints
  * on the dates of each meeting.
+ * @author Cooper LaRhette
  */
 public class CSP {
 
@@ -31,17 +32,18 @@ public class CSP {
         for (int i = 0; i < nMeetings; i++) {
             assignments.add(null);
         }
-
-//        for (DateConstraint d : constraints) {
-//            if (d.arity() == 1) {
-//                UnaryDateConstraint u = (UnaryDateConstraint) d;
-//                nodeConsistency(meetings.get(u.L_VAL), u);
-//            }
-//        }
         return backtracking(constraints, meetings, assignments, 0);
     }
 
 
+    /**
+     * Backtracking algorithm that ensures CSP is satifiactory and fins approriate meeting times for all meetings.
+     * @param constraints Constraints on schedule
+     * @param meetings number of meetings
+     * @param assignments Meeting date assignments
+     * @param index which meeting algo is working with
+     * @return List of assigned dates for each respective meeting
+     */
     private static ArrayList<LocalDate> backtracking(Set<DateConstraint> constraints, ArrayList<Meeting> meetings, ArrayList<LocalDate> assignments, int index) {
         ArrayList<LocalDate> result;
         if (!assignments.contains(null)) {
@@ -61,6 +63,13 @@ public class CSP {
         return null;
     }
 
+    /**
+     * Builds meeting objects
+     * @param nMeetings number of meetings needing scheduling
+     * @param rangeStart starting possible date range
+     * @param rangeEnd ending possible date range
+     * @return List of meeting objects
+     */
     private static ArrayList<Meeting> buildMeetings(int nMeetings, LocalDate rangeStart, LocalDate rangeEnd) {
         ArrayList<Meeting> result = new ArrayList<>();
         for (int i = 0; i < nMeetings; i++) {
@@ -129,15 +138,6 @@ public class CSP {
         }
 
         return false;
-    }
-
-    private static void nodeConsistency(Meeting meeting, UnaryDateConstraint constraint) {
-        ArrayList<LocalDate> pruned = new ArrayList<>();
-        for (LocalDate d : meeting.dateRange) {
-            if (!checkDateConsistency(d, constraint.R_VAL, constraint)) {
-                meeting.dateRange.remove(d);
-            }
-        }
     }
 
     private static class Meeting {
