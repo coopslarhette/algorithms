@@ -31,20 +31,27 @@ public class CSP {
         for (int i = 0; i < nMeetings; i++) {
             assignments.add(null);
         }
+
+//        for (DateConstraint d : constraints) {
+//            if (d.arity() == 1) {
+//                UnaryDateConstraint u = (UnaryDateConstraint) d;
+//                nodeConsistency(meetings.get(u.L_VAL), u);
+//            }
+//        }
         return backtracking(constraints, meetings, assignments, 0);
     }
 
 
     private static ArrayList<LocalDate> backtracking(Set<DateConstraint> constraints, ArrayList<Meeting> meetings, ArrayList<LocalDate> assignments, int index) {
-        ArrayList<LocalDate> result = new ArrayList<>();
-        if (!assignments.contains(null) && checkConstraints(assignments, constraints)) {
+        ArrayList<LocalDate> result;
+        if (!assignments.contains(null)) {
             return assignments;
         }
         Meeting newMeeting = meetings.get(index);
         for (LocalDate currDate : newMeeting.dateRange) {
             assignments.set(index, currDate);
             if (checkConstraints(assignments, constraints)) {
-                result = backtracking(constraints, meetings, assignments, index++);
+                result = backtracking(constraints, meetings, assignments, index+1);
                 if (result != null) {
                     return result;
                 }
@@ -72,9 +79,7 @@ public class CSP {
      * @return True if CSP is constraint-consistent, false otherwise.
      */
     private static boolean checkConstraints(ArrayList<LocalDate> assignments, Set<DateConstraint> constraints) {
-        System.out.println("constraints being checked");
         for (DateConstraint d : constraints) {
-            System.out.println("assignments: " + assignments.toString());
             if (d.arity() == 2) {
                 BinaryDateConstraint newConstraint = (BinaryDateConstraint) d;
                 if (assignments.get(newConstraint.L_VAL) != null && assignments.get(newConstraint.R_VAL) != null) {
@@ -124,6 +129,15 @@ public class CSP {
         }
 
         return false;
+    }
+
+    private static void nodeConsistency(Meeting meeting, UnaryDateConstraint constraint) {
+        ArrayList<LocalDate> pruned = new ArrayList<>();
+        for (LocalDate d : meeting.dateRange) {
+            if (!checkDateConsistency(d, constraint.R_VAL, constraint)) {
+                meeting.dateRange.remove(d);
+            }
+        }
     }
 
     private static class Meeting {
