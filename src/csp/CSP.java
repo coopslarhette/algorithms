@@ -39,24 +39,18 @@ public class CSP {
         ArrayList<LocalDate> result = new ArrayList<>();
         if (!assignments.contains(null) && checkConstraints(assignments, constraints)) {
             return assignments;
-        } else {
-            Meeting newMeeting = meetings.get(index);
-            for (LocalDate currDate : newMeeting.dateRange) {
-                System.out.println("date: " + currDate);
-                assignments.set(index, currDate);
-                System.out.println("here?");
-                if (checkConstraints(assignments, constraints)) {
-                    System.out.println("recursing");
-                    result = backtracking(constraints, meetings, assignments, index++);
-                    if (result != null) {
-                        System.out.println("checked");
-                        return result;
-                    }
-                }
-                assignments.set(index, null);
-            }
         }
-        System.out.println("returning null uh oh");
+        Meeting newMeeting = meetings.get(index);
+        for (LocalDate currDate : newMeeting.dateRange) {
+            assignments.set(index, currDate);
+            if (checkConstraints(assignments, constraints)) {
+                result = backtracking(constraints, meetings, assignments, index++);
+                if (result != null) {
+                    return result;
+                }
+            }
+            assignments.set(index, null);
+        }
         return null;
     }
 
@@ -69,8 +63,9 @@ public class CSP {
         return result;
     }
 
+
     /**
-     * Checks to see if a CSP solution satifies its constraints.
+     * Checks to see if a CSP solution satisfies its constraints.
      *
      * @param assignments Assignments to check consistency of.
      * @param constraints Constraints used to check assignments.
@@ -79,34 +74,55 @@ public class CSP {
     private static boolean checkConstraints(ArrayList<LocalDate> assignments, Set<DateConstraint> constraints) {
         System.out.println("constraints being checked");
         for (DateConstraint d : constraints) {
-            LocalDate leftDate = assignments.get(d.L_VAL),
-                    rightDate = (d.arity() == 1)
-                            ? ((UnaryDateConstraint) d).R_VAL
-                            : assignments.get(((BinaryDateConstraint) d).R_VAL);
-            System.out.println("d.OP: " + d.OP + ", r : " + rightDate + ", l: " + leftDate);
-            switch (d.OP) {
-                case "==":
-                    if (leftDate.isEqual(rightDate)) return true;
-                    break;
-                case "!=":
-                    if (!leftDate.isEqual(rightDate)) return true;
-                    break;
-                case ">":
-                    if (leftDate.isAfter(rightDate)) return true;
-                    break;
-                case "<":
-                    if (leftDate.isBefore(rightDate)) return true;
-                    break;
-                case ">=":
-                    if (leftDate.isAfter(rightDate) || leftDate.isEqual(rightDate)) return true;
-                    break;
-                case "<=":
-                    if (leftDate.isBefore(rightDate) || leftDate.isEqual(rightDate)) return true;
-                    break;
+            System.out.println("assignments: " + assignments.toString());
+            if (d.arity() == 2) {
+                BinaryDateConstraint newConstraint = (BinaryDateConstraint) d;
+                if (assignments.get(newConstraint.L_VAL) != null && assignments.get(newConstraint.R_VAL) != null) {
+                    if (!checkDateConsistency(assignments.get(newConstraint.L_VAL), assignments.get(newConstraint.R_VAL), d)) {
+                        return false;
+                    }
+                }
+            } else {
+                UnaryDateConstraint newConstraint = (UnaryDateConstraint) d;
+                if (assignments.get(newConstraint.L_VAL) != null) {
+                    if (!checkDateConsistency(assignments.get(newConstraint.L_VAL), newConstraint.R_VAL, d)) {
+                        return false;
+                    }
+                }
             }
-            System.out.println("uwu");
-            return false;
         }
+        return true;
+    }
+
+    /**
+     * Checks consistency of two dates with given constraint.
+     * @param leftDate
+     * @param rightDate
+     * @param constraint
+     * @return
+     */
+    private static boolean checkDateConsistency(LocalDate leftDate, LocalDate rightDate, DateConstraint constraint) {
+        switch (constraint.OP) {
+            case "==":
+                if (leftDate.isEqual(rightDate)) return true;
+                break;
+            case "!=":
+                if (!leftDate.isEqual(rightDate)) return true;
+                break;
+            case ">":
+                if (leftDate.isAfter(rightDate)) return true;
+                break;
+            case "<":
+                if (leftDate.isBefore(rightDate)) return true;
+                break;
+            case ">=":
+                if (leftDate.isAfter(rightDate) || leftDate.isEqual(rightDate)) return true;
+                break;
+            case "<=":
+                if (leftDate.isBefore(rightDate) || leftDate.isEqual(rightDate)) return true;
+                break;
+        }
+
         return false;
     }
 
