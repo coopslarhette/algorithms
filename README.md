@@ -8,8 +8,7 @@ an impassible wall and .'s are places where the algorithm is free to move
   * the algorithm is implemented using a search tree where cost of each move is uniform so cost is proportional to the depth
   of the tree
 * this alogrithm is, as the name implies, completely uninformed about its environment. because of this it is rather dumb and
-inefficient, it is simple and easy to understand however.
-informed
+inefficient
 
 ## game of nim
 * this module implements an algorithm that plays and tries to win the game of nim ([wiki article here](https://en.wikipedia.org/wiki/Nim))
