@@ -33,4 +33,9 @@ inefficient
   * it does this by assigning each character a different bitwise encoding based off of how many times it occurs in the orginal corpus
     * because of this we are often able to encode each character in a couple of bits instead of the 8 bits that each character would take up in a UTF-8 encoding
   * the encoding is implemented by creating and traversing a tree where each terminal node is represents a character in the string to encode
-    * each terminal node's distance from the root is related to the number of times it occurs in the original string 
+    * each terminal node's distance from the root is related to the number of times it occurs in the original string
+    * to arrive at each characters individual encoding, the algorithm traverses the tree and builds the new encoding out of 1's and 0's depending on whether or not it goes left or right at each node to arrive at the terminal node
+      * it then stores this encoding to be used later when building the new bitstring
+  * the original string is then compressed using each characters new huffman encoding which are concatenated together into a bitstring
+    * this bitstring is the compressed form of the string
+  * the bistring is then decompressed by the recieving party traversing the tree again to find each character that was encoded and building the string out from the bitstring (the tree is usually transmitted with the data so that it is possible to decode the data)
