@@ -27,3 +27,10 @@ inefficient
     * it finds the final solution by building on the solutions to the smaller subproblems where it looks for longest lcs length in the cell to the left and the cell above and takes the max of those two cells
     * each cell either inherits the solution from the cell to the left or above if the characters of the strings at the current index don't matches or increments the last found solution (located diagonally to the upper left in the array) if the characters match
     * it collects the solution in the same manner as the recursive solution
+## huffman encoding
+* in this module I implemented the huffman encoding and decoding algorithm
+  * this algorithm works to compress a given string such that it takes up less space on a hard drive than the original
+  * it does this by assigning each character a different bitwise encoding based off of how many times it occurs in the orginal corpus
+    * because of this we are often able to encode each character in a couple of bits instead of the 8 bits that each character would take up in a UTF-8 encoding
+  * the encoding is implemented by creating and traversing a tree where each terminal node is represents a character in the string to encode
+    * each terminal node's distance from the root is related to the number of times it occurs in the original string 
